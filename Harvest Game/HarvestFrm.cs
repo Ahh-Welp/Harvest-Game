@@ -16,8 +16,10 @@ namespace Harvest_Game
         Rectangle HotbarRec = new Rectangle(0, 0, 500, 80);
         Image Hotbar = Properties.Resources.Hotbar;
         Rectangle SpriteRec = new Rectangle(0, 0, 60, 60);
-        Image Sprite = Properties.Resources.Sprite;
-        Image Back = Properties.Resources.Sprite_Back;
+        Image Front = Properties.Resources.Front;
+        Image Back = Properties.Resources.Back;
+        Image Left = Properties.Resources.Left;
+        Image SpriteRight = Properties.Resources.Right;
         Rectangle Tree1 = new Rectangle(20, 50, 100, 100);
         Rectangle Tree2 = new Rectangle(120, 50, 100, 100);
         Rectangle Tree3 = new Rectangle(220, 50, 100, 100);
@@ -140,93 +142,41 @@ namespace Harvest_Game
             HotbarRec.X = 100;
             HotbarRec.Y = 480;
             MoneyLbl.Text = money + "";
-            if (TreeTime1.Enabled == false)
-            {
-                if (interact == true)
-                {
-                   if (SpriteRec.IntersectsWith(Tree1))
-                    {
-                        money = money - 5;
-                        TreeTime1.Enabled = true;
-                    }
-                }
-                if (apple1 == false)
-                {
-                    g.DrawImage(Little_Tree, Tree1);
-                }
-                if (apple1 == true)
-                {
-                    g.DrawImage(Apple, Tree1);
-
-                }
-            }
-            if (TreeTime2.Enabled == true)
-            {
-                g.DrawImage(Tree, Tree2);
-            }
-            if (TreeTime2.Enabled == false)
-            {
-                if (interact == true)
-                {
-                    if (SpriteRec.IntersectsWith(Tree1))
-                    {
-                        money = money - 5;
-                        TreeTime1.Enabled = true;
-                    }
-                }
-                if (apple1 == false)
-                {
-                    g.DrawImage(Little_Tree, Tree1);
-                }
-                if (apple1 == true)
-                {
-                    g.DrawImage(Apple, Tree1);
-
-                }
-            }
-            if (TreeTime1.Enabled == true)
-            {
-                g.DrawImage(Tree, Tree1);
-            }
-
-
-            //if (interact == true)
-            //{
-            //if (TreeTime1.Enabled == false)
-            //{
-            //g.DrawImage(Little_Tree, Tree1);
-
-            //}
-            //}
-            //if (TreeTime1.Enabled == false)
-            //{
-            //g.DrawImage(Little_Tree, Tree1);
-
-            //if (interact == true)
-            //{
-            //if (SpriteRec.IntersectsWith(Tree1))
-            //{
-            //money = money - 5;
-            //g.DrawImage(Tree, Tree1);
-            //TreeTime1.Enabled = true;
-            //Garden.Invalidate();
-            //}
-            //}
-            //}//
+            g.DrawImage(Little_Tree, Tree1);
             g.DrawImage(Little_Tree, Tree2);
             g.DrawImage(Little_Tree, Tree3);
             g.DrawImage(Little_Tree, Tree4);
             g.DrawImage(Little_Tree, Tree5);
             g.DrawImage(Little_Tree, Tree6);
 
+            if (SpriteRec.IntersectsWith(Tree1))
+            {
+                if (interact == true)
+                {
+                    if (TreeTime1.Enabled == false)
+                    {
+                        TreeTime1.Enabled = true;
+                        g.DrawImage(Tree, Tree1);
+                    }
+                }
+            }
+
             if (front == true)
             {
-                g.DrawImage(Sprite, SpriteRec);
+                g.DrawImage(Front, SpriteRec);
 
             }
             if (back == true)
             {
                 g.DrawImage(Back, SpriteRec);
+
+            }
+            if (left == true)
+            {
+
+            }
+            if (right == true)
+            {
 
             }
 
