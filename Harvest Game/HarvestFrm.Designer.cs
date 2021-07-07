@@ -36,6 +36,7 @@ namespace Harvest_Game
             this.label1 = new System.Windows.Forms.Label();
             this.TmrSprite = new System.Windows.Forms.Timer(this.components);
             this.TreeTime1 = new System.Windows.Forms.Timer(this.components);
+            this.TreeTime2 = new System.Windows.Forms.Timer(this.components);
             this.Garden.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,8 +58,9 @@ namespace Harvest_Game
             this.MoneyLbl.AutoSize = true;
             this.MoneyLbl.Location = new System.Drawing.Point(588, 148);
             this.MoneyLbl.Name = "MoneyLbl";
-            this.MoneyLbl.Size = new System.Drawing.Size(0, 15);
+            this.MoneyLbl.Size = new System.Drawing.Size(25, 15);
             this.MoneyLbl.TabIndex = 2;
+            this.MoneyLbl.Text = "500";
             // 
             // Money
             // 
@@ -81,6 +83,15 @@ namespace Harvest_Game
             this.TmrSprite.Enabled = true;
             this.TmrSprite.Interval = 10;
             this.TmrSprite.Tick += new System.EventHandler(this.TmrSprite_Tick);
+            // 
+            // TreeTime1
+            // 
+            this.TreeTime1.Interval = 10;
+            this.TreeTime1.Tick += new System.EventHandler(this.TreeTime1_Tick);
+            // 
+            // TreeTime2
+            // 
+            this.TreeTime2.Interval = 10;
             // 
             // HarvestFrm
             // 
@@ -108,6 +119,7 @@ namespace Harvest_Game
         private System.Windows.Forms.Label MoneyLbl;
         private System.Windows.Forms.Label MoneyL;
         private System.Windows.Forms.Label Money;
+        private System.Windows.Forms.Timer TreeTime2;
     }
 }
 

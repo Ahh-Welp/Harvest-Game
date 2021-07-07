@@ -31,6 +31,7 @@ namespace Harvest_Game
         Rectangle Hotbar5 = new Rectangle(0, 0, 500, 80);
         Image Tree = Properties.Resources.Tree;
         Image Little_Tree = Properties.Resources.Little_Tree;
+        Image Apple = Properties.Resources.Apple;
         int money = 500;
 
 
@@ -38,6 +39,12 @@ namespace Harvest_Game
         Graphics g;
         bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, one, two, three, four, five, interact;
 
+        private void TreeTime1_Tick(object sender, EventArgs e)
+        {
+            apple1 = true;
+            TreeTime1.Enabled = false;
+            Garden.Invalidate();
+        }
 
         private void HarvestFrm_KeyUp(object sender, KeyEventArgs e)
         {
@@ -132,22 +139,80 @@ namespace Harvest_Game
             g = e.Graphics;
             HotbarRec.X = 100;
             HotbarRec.Y = 480;
+            MoneyLbl.Text = money + "";
             if (TreeTime1.Enabled == false)
             {
-                g.DrawImage(Little_Tree, Tree1);
+                if (interact == true)
+                {
+                   if (SpriteRec.IntersectsWith(Tree1))
+                    {
+                        money = money - 5;
+                        TreeTime1.Enabled = true;
+                    }
+                }
+                if (apple1 == false)
+                {
+                    g.DrawImage(Little_Tree, Tree1);
+                }
+                if (apple1 == true)
+                {
+                    g.DrawImage(Apple, Tree1);
 
+                }
+            }
+            if (TreeTime2.Enabled == true)
+            {
+                g.DrawImage(Tree, Tree2);
+            }
+            if (TreeTime2.Enabled == false)
+            {
                 if (interact == true)
                 {
                     if (SpriteRec.IntersectsWith(Tree1))
                     {
                         money = money - 5;
-                        g.DrawImage(Tree, Tree1);
                         TreeTime1.Enabled = true;
-
                     }
                 }
+                if (apple1 == false)
+                {
+                    g.DrawImage(Little_Tree, Tree1);
+                }
+                if (apple1 == true)
+                {
+                    g.DrawImage(Apple, Tree1);
+
+                }
             }
-            g.DrawImage(Little_Tree, Tree1);
+            if (TreeTime1.Enabled == true)
+            {
+                g.DrawImage(Tree, Tree1);
+            }
+
+
+            //if (interact == true)
+            //{
+            //if (TreeTime1.Enabled == false)
+            //{
+            //g.DrawImage(Little_Tree, Tree1);
+
+            //}
+            //}
+            //if (TreeTime1.Enabled == false)
+            //{
+            //g.DrawImage(Little_Tree, Tree1);
+
+            //if (interact == true)
+            //{
+            //if (SpriteRec.IntersectsWith(Tree1))
+            //{
+            //money = money - 5;
+            //g.DrawImage(Tree, Tree1);
+            //TreeTime1.Enabled = true;
+            //Garden.Invalidate();
+            //}
+            //}
+            //}//
             g.DrawImage(Little_Tree, Tree2);
             g.DrawImage(Little_Tree, Tree3);
             g.DrawImage(Little_Tree, Tree4);
