@@ -18,7 +18,7 @@ namespace Harvest_Game
         Rectangle SpriteRec = new Rectangle(0, 0, 60, 60);
         Image Front = Properties.Resources.Front;
         Image Back = Properties.Resources.Back;
-        Image Left = Properties.Resources.Left;
+        Image SpriteLeft = Properties.Resources.Left;
         Image SpriteRight = Properties.Resources.Right;
         Rectangle Tree1 = new Rectangle(20, 50, 100, 100);
         Rectangle Tree2 = new Rectangle(120, 50, 100, 100);
@@ -32,14 +32,38 @@ namespace Harvest_Game
         Rectangle Hotbar4 = new Rectangle(0, 0, 500, 80);
         Rectangle Hotbar5 = new Rectangle(0, 0, 500, 80);
         Image Tree = Properties.Resources.Tree;
-        Image Little_Tree = Properties.Resources.Little_Tree;
         Image Apple = Properties.Resources.Apple;
+        Image Nashi = Properties.Resources.Nashi;
+        Image Peach = Properties.Resources.Peach;
+
+
         int money = 500;
 
 
 
         Graphics g;
-        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, one, two, three, four, five, interact;
+        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, leftview, rightview, one, two, three, four, five, interact;
+
+        private void TreeTime4_Tick(object sender, EventArgs e)
+        {
+            apple2 = true;
+            TreeTime4.Enabled = false;
+            Garden.Invalidate();
+        }
+
+        private void TreeTime3_Tick(object sender, EventArgs e)
+        {
+            peach1 = true;
+            TreeTime3.Enabled = false;
+            Garden.Invalidate();
+        }
+
+        private void TreeTime2_Tick(object sender, EventArgs e)
+        {
+            nashi1 = true;
+            TreeTime2.Enabled = false;
+            Garden.Invalidate();
+        }
 
         private void TreeTime1_Tick(object sender, EventArgs e)
         {
@@ -66,11 +90,13 @@ namespace Harvest_Game
         {
             if (e.KeyData == Keys.Left) 
             {
-                left = true; 
+                left = true;
+                leftview = true;
             }
             if (e.KeyData == Keys.Right) 
             { 
-                right = true; 
+                right = true;
+                rightview = true;
             }
             if (e.KeyData == Keys.Up) 
             { 
@@ -142,42 +168,122 @@ namespace Harvest_Game
             HotbarRec.X = 100;
             HotbarRec.Y = 480;
             MoneyLbl.Text = money + "";
-            g.DrawImage(Little_Tree, Tree1);
-            g.DrawImage(Little_Tree, Tree2);
-            g.DrawImage(Little_Tree, Tree3);
-            g.DrawImage(Little_Tree, Tree4);
-            g.DrawImage(Little_Tree, Tree5);
-            g.DrawImage(Little_Tree, Tree6);
+            g.DrawImage(Tree, Tree2);
+            g.DrawImage(Tree, Tree3);
+            g.DrawImage(Tree, Tree4);
+            g.DrawImage(Tree, Tree5);
+            g.DrawImage(Tree, Tree6);
 
-            if (SpriteRec.IntersectsWith(Tree1))
+            if (SpriteRec.IntersectsWith(Tree1)) //Tree One Code
             {
                 if (interact == true)
                 {
-                    if (TreeTime1.Enabled == false)
+                    if (apple1 == true)
                     {
-                        TreeTime1.Enabled = true;
-                        g.DrawImage(Tree, Tree1);
+                        interact = false;
+                        TreeTime1.Enabled =  true;
+                        money = money + 50;
+                        apple1 = false;
                     }
                 }
             }
-
-            if (front == true)
+            if (apple1 == true)
             {
-                g.DrawImage(Front, SpriteRec);
+                g.DrawImage(Apple, Tree1);
+            }
+            if (apple1 == false)
+            {
+                g.DrawImage(Tree, Tree1);
 
             }
-            if (back == true)
-            {
-                g.DrawImage(Back, SpriteRec);
 
+            if (SpriteRec.IntersectsWith(Tree2)) //Tree Two Code
+            {
+                if (interact == true)
+                {
+                    if (nashi1 == true)
+                    {
+                        interact = false;
+                        TreeTime2.Enabled = true;
+                        money = money + 50;
+                        nashi1 = false;
+                    }
+                }
+            }
+            if (nashi1 == true)
+            {
+                g.DrawImage(Nashi, Tree2);
+            }
+            if (nashi1 == false)
+            {
+                g.DrawImage(Tree, Tree2);
+            }
+
+            if (SpriteRec.IntersectsWith(Tree3)) //Tree Three Code
+            {
+                if (interact == true)
+                {
+                    if (peach1 == true)
+                    {
+                        interact = false;
+                        TreeTime3.Enabled = true;
+                        money = money + 50;
+                        peach1 = false;
+                    }
+                }
+            }
+            if (peach1 == true)
+            {
+                g.DrawImage(Peach, Tree3);
+            }
+            if (peach1 == false)
+            {
+                g.DrawImage(Tree, Tree3);
+            }
+
+            if (SpriteRec.IntersectsWith(Tree4)) //Tree Four Code
+            {
+                if (interact == true)
+                {
+                    if (apple2 == true)
+                    {
+                        interact = false;
+                        TreeTime4.Enabled = true;
+                        money = money + 50;
+                        apple2 = false;
+                    }
+                }
+            }
+            if (apple2 == true)
+            {
+                g.DrawImage(Apple, Tree4);
+            }
+            if (apple2 == false)
+            {
+                g.DrawImage(Tree, Tree4);
+            }
+
+            if (left == false)
+            {
+                if (right == false)
+                {
+                    if (front == true)
+                    {
+                        g.DrawImage(Front, SpriteRec);
+                    }
+                    if (back == true)
+                    {
+                        g.DrawImage(Back, SpriteRec);
+                    }
+                }
             }
             if (left == true)
             {
-
+                g.DrawImage(SpriteLeft, SpriteRec);
             }
             if (right == true)
             {
-
+                g.DrawImage(SpriteRight, SpriteRec);
             }
 
 
