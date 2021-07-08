@@ -31,18 +31,39 @@ namespace Harvest_Game
         Rectangle Hotbar3 = new Rectangle(0, 0, 500, 80);
         Rectangle Hotbar4 = new Rectangle(0, 0, 500, 80);
         Rectangle Hotbar5 = new Rectangle(0, 0, 500, 80);
+        Rectangle Crop1 = new Rectangle(20, 50, 100, 100);
+
         Image Tree = Properties.Resources.Tree;
         Image Apple = Properties.Resources.Apple;
         Image Nashi = Properties.Resources.Nashi;
         Image Peach = Properties.Resources.Peach;
 
 
-        int money = 500;
+        int money = 0;
 
 
 
         Graphics g;
-        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, leftview, rightview, one, two, three, four, five, interact;
+        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, one, two, three, four, five, interact;
+
+        private void Crop1Time_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TreeTime6_Tick(object sender, EventArgs e)
+        {
+            peach2 = true;
+            TreeTime6.Enabled = false;
+            Garden.Invalidate();
+        }
+
+        private void TreeTime5_Tick(object sender, EventArgs e)
+        {
+            nashi2 = true;
+            TreeTime5.Enabled = false;
+            Garden.Invalidate();
+        }
 
         private void TreeTime4_Tick(object sender, EventArgs e)
         {
@@ -91,12 +112,10 @@ namespace Harvest_Game
             if (e.KeyData == Keys.Left) 
             {
                 left = true;
-                leftview = true;
             }
             if (e.KeyData == Keys.Right) 
             { 
                 right = true;
-                rightview = true;
             }
             if (e.KeyData == Keys.Up) 
             { 
@@ -131,6 +150,39 @@ namespace Harvest_Game
                 back = false;
             }
             if (e.KeyData == Keys.Enter) { interact = true; }
+            if (e.KeyData == Keys.D1)
+            {
+                if (one == false)
+                {
+                    one = true;
+                }
+                if (one == true)
+                {
+                    one = false;
+                }
+            }
+            if (e.KeyData == Keys.D2)
+            {
+                if (two == false)
+                {
+                    two = true;
+                }
+                if (two == true)
+                {
+                    two = false;
+                }
+            }
+            if (e.KeyData == Keys.D3)
+            {
+                if (three == false)
+                {
+                    three = true;
+                }
+                if (three == true)
+                {
+                    three = false;
+                }
+            }
         }
 
         private void TmrSprite_Tick(object sender, EventArgs e)
@@ -168,12 +220,6 @@ namespace Harvest_Game
             HotbarRec.X = 100;
             HotbarRec.Y = 480;
             MoneyLbl.Text = money + "";
-            g.DrawImage(Tree, Tree2);
-            g.DrawImage(Tree, Tree3);
-            g.DrawImage(Tree, Tree4);
-            g.DrawImage(Tree, Tree5);
-            g.DrawImage(Tree, Tree6);
-
             if (SpriteRec.IntersectsWith(Tree1)) //Tree One Code
             {
                 if (interact == true)
@@ -263,7 +309,61 @@ namespace Harvest_Game
                 g.DrawImage(Tree, Tree4);
             }
 
-            if (left == false)
+            if (SpriteRec.IntersectsWith(Tree5)) //Tree Five Code
+            {
+                if (interact == true)
+                {
+                    if (nashi2 == true)
+                    {
+                        interact = false;
+                        TreeTime5.Enabled = true;
+                        money = money + 50;
+                        nashi2 = false;
+                    }
+                }
+            }
+            if (nashi2 == true)
+            {
+                g.DrawImage(Nashi, Tree5);
+            }
+            if (nashi2 == false)
+            {
+                g.DrawImage(Tree, Tree5);
+            }
+
+            if (SpriteRec.IntersectsWith(Tree6)) //Tree Six Code
+            {
+                if (interact == true)
+                {
+                    if (peach2 == true)
+                    {
+                        interact = false;
+                        TreeTime6.Enabled = true;
+                        money = money + 50;
+                        peach2 = false;
+                    }
+                }
+            }
+            if (peach2 == true)
+            {
+                g.DrawImage(Peach, Tree6);
+            }
+            if (peach2 == false)
+            {
+                g.DrawImage(Tree, Tree6);
+            }
+
+            // ok time to try the crop code. yaaaaaaay -_-
+            if (SpriteRec.IntersectsWith(Crop1))
+            {
+                if (interact == true)
+                {
+                    
+                }
+            }
+
+
+            if (left == false) //Sprite looks different depending on what direction it is facing
             {
                 if (right == false)
                 {

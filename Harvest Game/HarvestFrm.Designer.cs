@@ -39,6 +39,9 @@ namespace Harvest_Game
             this.TreeTime2 = new System.Windows.Forms.Timer(this.components);
             this.TreeTime3 = new System.Windows.Forms.Timer(this.components);
             this.TreeTime4 = new System.Windows.Forms.Timer(this.components);
+            this.TreeTime5 = new System.Windows.Forms.Timer(this.components);
+            this.TreeTime6 = new System.Windows.Forms.Timer(this.components);
+            this.Crop1Time = new System.Windows.Forms.Timer(this.components);
             this.Garden.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,6 +113,22 @@ namespace Harvest_Game
             this.TreeTime4.Interval = 5000;
             this.TreeTime4.Tick += new System.EventHandler(this.TreeTime4_Tick);
             // 
+            // TreeTime5
+            // 
+            this.TreeTime5.Enabled = true;
+            this.TreeTime5.Interval = 5000;
+            this.TreeTime5.Tick += new System.EventHandler(this.TreeTime5_Tick);
+            // 
+            // TreeTime6
+            // 
+            this.TreeTime6.Enabled = true;
+            this.TreeTime6.Interval = 5000;
+            this.TreeTime6.Tick += new System.EventHandler(this.TreeTime6_Tick);
+            // 
+            // Crop1Time
+            // 
+            this.Crop1Time.Tick += new System.EventHandler(this.Crop1Time_Tick);
+            // 
             // HarvestFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -139,6 +158,9 @@ namespace Harvest_Game
         private System.Windows.Forms.Timer TreeTime2;
         private System.Windows.Forms.Timer TreeTime3;
         private System.Windows.Forms.Timer TreeTime4;
+        private System.Windows.Forms.Timer TreeTime5;
+        private System.Windows.Forms.Timer TreeTime6;
+        private System.Windows.Forms.Timer Crop1Time;
     }
 }
 
