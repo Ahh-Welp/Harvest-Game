@@ -41,7 +41,7 @@ namespace Harvest_Game
             this.TreeTime4 = new System.Windows.Forms.Timer(this.components);
             this.TreeTime5 = new System.Windows.Forms.Timer(this.components);
             this.TreeTime6 = new System.Windows.Forms.Timer(this.components);
-            this.Crop1Time = new System.Windows.Forms.Timer(this.components);
+            this.Rent = new System.Windows.Forms.Timer(this.components);
             this.Garden.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,9 +125,11 @@ namespace Harvest_Game
             this.TreeTime6.Interval = 5000;
             this.TreeTime6.Tick += new System.EventHandler(this.TreeTime6_Tick);
             // 
-            // Crop1Time
+            // Rent
             // 
-            this.Crop1Time.Tick += new System.EventHandler(this.Crop1Time_Tick);
+            this.Rent.Enabled = true;
+            this.Rent.Interval = 10000;
+            this.Rent.Tick += new System.EventHandler(this.Rent_Tick);
             // 
             // HarvestFrm
             // 
@@ -160,7 +162,7 @@ namespace Harvest_Game
         private System.Windows.Forms.Timer TreeTime4;
         private System.Windows.Forms.Timer TreeTime5;
         private System.Windows.Forms.Timer TreeTime6;
-        private System.Windows.Forms.Timer Crop1Time;
+        private System.Windows.Forms.Timer Rent;
     }
 }
 

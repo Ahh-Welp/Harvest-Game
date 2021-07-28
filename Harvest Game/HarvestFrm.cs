@@ -13,8 +13,6 @@ namespace Harvest_Game
 {
     public partial class HarvestFrm : Form
     {
-        Rectangle HotbarRec = new Rectangle(0, 0, 500, 80);
-        Image Hotbar = Properties.Resources.Hotbar;
         Rectangle SpriteRec = new Rectangle(0, 0, 60, 60);
         Image Front = Properties.Resources.Front;
         Image Back = Properties.Resources.Back;
@@ -26,11 +24,6 @@ namespace Harvest_Game
         Rectangle Tree4 = new Rectangle(390, 50, 100, 100);
         Rectangle Tree5 = new Rectangle(490, 50, 100, 100);
         Rectangle Tree6 = new Rectangle(590, 50, 100, 100);
-        Rectangle Hotbar1 = new Rectangle(0, 0, 500, 80);
-        Rectangle Hotbar2 = new Rectangle(0, 0, 500, 80);
-        Rectangle Hotbar3 = new Rectangle(0, 0, 500, 80);
-        Rectangle Hotbar4 = new Rectangle(0, 0, 500, 80);
-        Rectangle Hotbar5 = new Rectangle(0, 0, 500, 80);
         Rectangle Crop1 = new Rectangle(20, 50, 100, 100);
 
         Image Tree = Properties.Resources.Tree;
@@ -44,11 +37,11 @@ namespace Harvest_Game
 
 
         Graphics g;
-        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, one, two, three, four, five, interact;
+        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, one, two, three, four, five, interact, instructions;
 
-        private void Crop1Time_Tick(object sender, EventArgs e)
+        private void Rent_Tick(object sender, EventArgs e)
         {
-
+            money = money - 200;
         }
 
         private void TreeTime6_Tick(object sender, EventArgs e)
@@ -150,39 +143,16 @@ namespace Harvest_Game
                 back = false;
             }
             if (e.KeyData == Keys.Enter) { interact = true; }
-            if (e.KeyData == Keys.D1)
+            if (e.KeyData == Keys.I) 
             {
-                if (one == false)
-                {
-                    one = true;
-                }
-                if (one == true)
-                {
-                    one = false;
-                }
+                MessageBox.Show("Instructions for play: " +
+                    "Use WASD or Arrow Keys to move the character. Use enter to interact with the things around you!" +
+                    "Trees will regrow after a certain amount of time, while you need to pay to plant more flowers." +
+                    "Rent is collected after a certain amount of time. There will be a message box to show you remind you that rent is being paid!" +
+                    "Press 'I' to see this information box again." +
+                    "Have fun!");
             }
-            if (e.KeyData == Keys.D2)
-            {
-                if (two == false)
-                {
-                    two = true;
-                }
-                if (two == true)
-                {
-                    two = false;
-                }
-            }
-            if (e.KeyData == Keys.D3)
-            {
-                if (three == false)
-                {
-                    three = true;
-                }
-                if (three == true)
-                {
-                    three = false;
-                }
-            }
+
         }
 
         private void TmrSprite_Tick(object sender, EventArgs e)
@@ -217,8 +187,6 @@ namespace Harvest_Game
         private void Garden_Paint(object sender, PaintEventArgs e)
         {
             g = e.Graphics;
-            HotbarRec.X = 100;
-            HotbarRec.Y = 480;
             MoneyLbl.Text = money + "";
             if (SpriteRec.IntersectsWith(Tree1)) //Tree One Code
             {
@@ -385,9 +353,6 @@ namespace Harvest_Game
             {
                 g.DrawImage(SpriteRight, SpriteRec);
             }
-
-
-            g.DrawImage(Hotbar, HotbarRec);
         }
     }
 }
