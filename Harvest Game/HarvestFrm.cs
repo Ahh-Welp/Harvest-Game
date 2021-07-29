@@ -24,7 +24,7 @@ namespace Harvest_Game
         Rectangle Tree4 = new Rectangle(390, 50, 100, 100);
         Rectangle Tree5 = new Rectangle(490, 50, 100, 100);
         Rectangle Tree6 = new Rectangle(590, 50, 100, 100);
-        Rectangle Crop1 = new Rectangle(20, 50, 100, 100);
+        Rectangle Daisy1 = new Rectangle(20, 100, 100, 100);
 
         Image Tree = Properties.Resources.Tree;
         Image Apple = Properties.Resources.Apple;
@@ -32,15 +32,16 @@ namespace Harvest_Game
         Image Peach = Properties.Resources.Peach;
 
 
-        int money = 0;
+        int money = 500;
 
 
 
         Graphics g;
-        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, one, two, three, four, five, interact, instructions;
+        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3;
 
         private void Rent_Tick(object sender, EventArgs e)
         {
+            MessageBox.Show("Rent is due! The funds have been taken from your account.");
             money = money - 200;
         }
 
@@ -96,28 +97,28 @@ namespace Harvest_Game
             if (e.KeyData == Keys.D) { right = false; }
             if (e.KeyData == Keys.W) { up = false; }
             if (e.KeyData == Keys.S) { down = false; }
-            if (e.KeyData == Keys.Enter){interact = false;}
+            if (e.KeyData == Keys.Enter) { interact = false; }
 
-        } 
+        }
 
         private void HarvestFrm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Left) 
+            if (e.KeyData == Keys.Left)
             {
                 left = true;
             }
-            if (e.KeyData == Keys.Right) 
-            { 
+            if (e.KeyData == Keys.Right)
+            {
                 right = true;
             }
-            if (e.KeyData == Keys.Up) 
-            { 
+            if (e.KeyData == Keys.Up)
+            {
                 up = true;
                 back = true;
                 front = false;
             }
-            if (e.KeyData == Keys.Down) 
-            { 
+            if (e.KeyData == Keys.Down)
+            {
                 down = true;
                 front = true;
                 back = false;
@@ -143,7 +144,7 @@ namespace Harvest_Game
                 back = false;
             }
             if (e.KeyData == Keys.Enter) { interact = true; }
-            if (e.KeyData == Keys.I) 
+            if (e.KeyData == Keys.I)
             {
                 MessageBox.Show("Instructions for play: " +
                     "Use WASD or Arrow Keys to move the character. Use enter to interact with the things around you!" +
@@ -151,6 +152,11 @@ namespace Harvest_Game
                     "Rent is collected after a certain amount of time. There will be a message box to show you remind you that rent is being paid!" +
                     "Press 'I' to see this information box again." +
                     "Have fun!");
+                left = false;
+                right = false;
+                up = false;
+                down = false;
+                Rent.Enabled = false;
             }
 
         }
@@ -158,12 +164,12 @@ namespace Harvest_Game
         private void TmrSprite_Tick(object sender, EventArgs e)
         {
             if (left == true)
-            { 
-                SpriteRec.X -= 2; 
+            {
+                SpriteRec.X -= 2;
             }//move sprite 2 to the left
-            if (right == true) 
-            { 
-                SpriteRec.X += 2; 
+            if (right == true)
+            {
+                SpriteRec.X += 2;
             }// move sprite 2 to the right
             if (down == true)
             {
@@ -179,8 +185,8 @@ namespace Harvest_Game
         public HarvestFrm()
         {
             InitializeComponent();
-            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty 
-                | BindingFlags.Instance | BindingFlags.NonPublic, null, Garden, 
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
+                | BindingFlags.Instance | BindingFlags.NonPublic, null, Garden,
                 new object[] { true });
         }
 
@@ -195,7 +201,7 @@ namespace Harvest_Game
                     if (apple1 == true)
                     {
                         interact = false;
-                        TreeTime1.Enabled =  true;
+                        TreeTime1.Enabled = true;
                         money = money + 50;
                         apple1 = false;
                     }
@@ -322,14 +328,19 @@ namespace Harvest_Game
             }
 
             // ok time to try the crop code. yaaaaaaay -_-
-            if (SpriteRec.IntersectsWith(Crop1))
+            if (SpriteRec.IntersectsWith(Daisy1))
             {
                 if (interact == true)
                 {
-                    
+                    if (daisy1 == true)
+                    {
+                        interact = false;
+                        DaisyGrow1.Enabled = true;
+                        money = money + 50;
+                        daisy1 = false;
+                    }
                 }
             }
-
 
             if (left == false) //Sprite looks different depending on what direction it is facing
             {

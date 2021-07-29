@@ -42,6 +42,7 @@ namespace Harvest_Game
             this.TreeTime5 = new System.Windows.Forms.Timer(this.components);
             this.TreeTime6 = new System.Windows.Forms.Timer(this.components);
             this.Rent = new System.Windows.Forms.Timer(this.components);
+            this.DaisyGrow1 = new System.Windows.Forms.Timer(this.components);
             this.Garden.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,6 +132,10 @@ namespace Harvest_Game
             this.Rent.Interval = 10000;
             this.Rent.Tick += new System.EventHandler(this.Rent_Tick);
             // 
+            // DaisyGrow1
+            // 
+            this.DaisyGrow1.Interval = 1000;
+            // 
             // HarvestFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -163,6 +168,7 @@ namespace Harvest_Game
         private System.Windows.Forms.Timer TreeTime5;
         private System.Windows.Forms.Timer TreeTime6;
         private System.Windows.Forms.Timer Rent;
+        private System.Windows.Forms.Timer DaisyGrow1;
     }
 }
 
