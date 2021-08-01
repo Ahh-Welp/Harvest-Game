@@ -24,7 +24,7 @@ namespace Harvest_Game
         Rectangle Tree4 = new Rectangle(390, 50, 100, 100);
         Rectangle Tree5 = new Rectangle(490, 50, 100, 100);
         Rectangle Tree6 = new Rectangle(590, 50, 100, 100);
-        Rectangle Daisy1 = new Rectangle(20, 100, 100, 100);
+        Rectangle Daisy1 = new Rectangle(20, 200, 100, 100);
 
         Image Tree = Properties.Resources.Tree;
         Image Apple = Properties.Resources.Apple;
@@ -47,7 +47,7 @@ namespace Harvest_Game
             down = false;
             Rent.Enabled = false;
             MessageBox.Show("Rent is due! The funds have been taken from your account.");
-            money = money - 200;
+            money = money - 1000;
             Rent.Enabled = true;
 
         }
@@ -153,17 +153,16 @@ namespace Harvest_Game
             if (e.KeyData == Keys.Enter) { interact = true; }
             if (e.KeyData == Keys.I)
             {
-                MessageBox.Show("Instructions for play: " +
-                    "Use WASD or Arrow Keys to move the character. Use enter to interact with the things around you!" +
-                    "Trees will regrow after a certain amount of time, while you need to pay to plant more flowers." +
-                    "Rent is collected after a certain amount of time. There will be a message box to show you remind you that rent is being paid!" +
-                    "Press 'I' to see this information box again." +
-                    "Have fun!");
                 left = false;
                 right = false;
                 up = false;
                 down = false;
-                Rent.Enabled = false;
+                MessageBox.Show("Instructions for play: " +
+                    "Use WASD or Arrow Keys to move the character. Use enter to interact with the things around you!" + Environment.NewLine +
+                    "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
+                    "Rent is collected after a certain amount of time. The amount that you have to pay for rent is $1000 There will be a message box to show you remind you that rent is being paid!" + Environment.NewLine +
+                    "Press 'I' to see this information box again." + Environment.NewLine +
+                    "Have fun!");
             }
 
         }
@@ -225,6 +224,14 @@ namespace Harvest_Game
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
                 | BindingFlags.Instance | BindingFlags.NonPublic, null, Garden,
                 new object[] { true });
+            Rent.Enabled = false;
+            MessageBox.Show("Instructions for play: " +
+                "Use WASD or Arrow Keys to move the character. Use enter to interact with the things around you!" + Environment.NewLine +
+                "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
+                "Rent is collected after a certain amount of time. There will be a message box to show you remind you that rent is being paid!" + Environment.NewLine +
+                "Press 'I' to see this information box again." + Environment.NewLine +
+                "Have fun!");
+            Rent.Enabled = true;
         }
 
         private void Garden_Paint(object sender, PaintEventArgs e)
@@ -364,24 +371,26 @@ namespace Harvest_Game
                 g.DrawImage(Tree, Tree6);
             }
 
-            // ok time to try the crop code. yaaaaaaay -_-
-            if (SpriteRec.IntersectsWith(Daisy1))
+            if (SpriteRec.IntersectsWith(Daisy1)) //Daisy One Code
             {
                 if (interact == true)
                 {
                     if (daisy1 == true)
                     {
                         interact = false;
-                        DaisyGrow1.Enabled = false;
+                        DaisyGrow1.Enabled = true;
                         money = money + 50;
                         daisy1 = false;
                     }
-                    if (daisy1 == false)
-                    {
-                        interact = false;
-
-                    }
                 }
+            }
+            if (daisy1 == true)
+            {
+                g.DrawImage(Peach, Daisy1);
+            }
+            if (peach1 == false)
+            {
+                g.DrawImage(Tree, Daisy1);
             }
 
             if (left == false) //Sprite looks different depending on what direction it is facing
