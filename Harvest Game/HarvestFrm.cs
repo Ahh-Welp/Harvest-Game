@@ -41,8 +41,15 @@ namespace Harvest_Game
 
         private void Rent_Tick(object sender, EventArgs e)
         {
+            left = false;
+            right = false;
+            up = false;
+            down = false;
+            Rent.Enabled = false;
             MessageBox.Show("Rent is due! The funds have been taken from your account.");
             money = money - 200;
+            Rent.Enabled = true;
+
         }
 
         private void TreeTime6_Tick(object sender, EventArgs e)
@@ -165,19 +172,49 @@ namespace Harvest_Game
         {
             if (left == true)
             {
-                SpriteRec.X -= 2;
-            }//move sprite 2 to the left
+                if (SpriteRec.X < 10)
+                {
+                    SpriteRec.X = 10;
+                }
+                else
+                {
+                    SpriteRec.X -= 2; //move sprite 2 to the left
+                }
+            }
             if (right == true)
             {
-                SpriteRec.X += 2;
+                if (SpriteRec.X > Garden.Width - 55)// is spaceship within 55 of right side
+                {
+                    SpriteRec.X = Garden.Width - 55;
+                }
+                else
+                {
+                    SpriteRec.X += 2;
+                }
+
             }// move sprite 2 to the right
             if (down == true)
             {
-                SpriteRec.Y += 2;
+                if (SpriteRec.Y > 490)// is spaceship within 40 of right side
+                {
+                    SpriteRec.Y = 490;
+                }
+                else
+                {
+                    SpriteRec.Y += 2;
+                }
+
             }
             if (up == true)
             {
-                SpriteRec.Y -= 2;
+                if (SpriteRec.Y < 10)
+                {
+                    SpriteRec.Y = 10;
+                }
+                else
+                {
+                    SpriteRec.Y -= 2; //move sprite 2 to the left
+                }
             }
             Garden.Invalidate();
         }
@@ -335,9 +372,14 @@ namespace Harvest_Game
                     if (daisy1 == true)
                     {
                         interact = false;
-                        DaisyGrow1.Enabled = true;
+                        DaisyGrow1.Enabled = false;
                         money = money + 50;
                         daisy1 = false;
+                    }
+                    if (daisy1 == false)
+                    {
+                        interact = false;
+
                     }
                 }
             }

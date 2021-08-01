@@ -129,7 +129,7 @@ namespace Harvest_Game
             // Rent
             // 
             this.Rent.Enabled = true;
-            this.Rent.Interval = 10000;
+            this.Rent.Interval = 20000;
             this.Rent.Tick += new System.EventHandler(this.Rent_Tick);
             // 
             // DaisyGrow1
