@@ -48,6 +48,9 @@ namespace Harvest_Game
             this.AlliumGrow1 = new System.Windows.Forms.Timer(this.components);
             this.AlliumGrow2 = new System.Windows.Forms.Timer(this.components);
             this.AlliumGrow3 = new System.Windows.Forms.Timer(this.components);
+            this.LavenderGrow3 = new System.Windows.Forms.Timer(this.components);
+            this.LavenderGrow2 = new System.Windows.Forms.Timer(this.components);
+            this.LavenderGrow1 = new System.Windows.Forms.Timer(this.components);
             this.Garden.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -173,6 +176,21 @@ namespace Harvest_Game
             this.AlliumGrow3.Interval = 5000;
             this.AlliumGrow3.Tick += new System.EventHandler(this.AlliumGrow3_Tick);
             // 
+            // LavenderGrow3
+            // 
+            this.LavenderGrow3.Enabled = true;
+            this.LavenderGrow3.Interval = 5000;
+            // 
+            // LavenderGrow2
+            // 
+            this.LavenderGrow2.Enabled = true;
+            this.LavenderGrow2.Interval = 5000;
+            // 
+            // LavenderGrow1
+            // 
+            this.LavenderGrow1.Enabled = true;
+            this.LavenderGrow1.Interval = 5000;
+            // 
             // HarvestFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -211,6 +229,9 @@ namespace Harvest_Game
         private System.Windows.Forms.Timer AlliumGrow1;
         private System.Windows.Forms.Timer AlliumGrow2;
         private System.Windows.Forms.Timer AlliumGrow3;
+        private System.Windows.Forms.Timer LavenderGrow3;
+        private System.Windows.Forms.Timer LavenderGrow2;
+        private System.Windows.Forms.Timer LavenderGrow1;
     }
 }
 
