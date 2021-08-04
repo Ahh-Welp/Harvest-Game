@@ -63,6 +63,16 @@ namespace Harvest_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Allium {
+            get {
+                object obj = ResourceManager.GetObject("Allium", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Apple {
             get {
                 object obj = ResourceManager.GetObject("Apple", resourceCulture);
@@ -83,6 +93,16 @@ namespace Harvest_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Daisy {
+            get {
+                object obj = ResourceManager.GetObject("Daisy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Front {
             get {
                 object obj = ResourceManager.GetObject("Front", resourceCulture);
@@ -93,9 +113,29 @@ namespace Harvest_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Growing {
+            get {
+                object obj = ResourceManager.GetObject("Growing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Hotbar {
             get {
                 object obj = ResourceManager.GetObject("Hotbar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Lavender {
+            get {
+                object obj = ResourceManager.GetObject("Lavender", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,16 +173,6 @@ namespace Harvest_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap One {
-            get {
-                object obj = ResourceManager.GetObject("One", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Peach {
             get {
                 object obj = ResourceManager.GetObject("Peach", resourceCulture);
@@ -156,6 +186,16 @@ namespace Harvest_Game.Properties {
         internal static System.Drawing.Bitmap Right {
             get {
                 object obj = ResourceManager.GetObject("Right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sunflower {
+            get {
+                object obj = ResourceManager.GetObject("Sunflower", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

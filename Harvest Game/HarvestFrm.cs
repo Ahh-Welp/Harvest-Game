@@ -24,12 +24,24 @@ namespace Harvest_Game
         Rectangle Tree4 = new Rectangle(390, 50, 100, 100);
         Rectangle Tree5 = new Rectangle(490, 50, 100, 100);
         Rectangle Tree6 = new Rectangle(590, 50, 100, 100);
-        Rectangle Daisy1 = new Rectangle(20, 200, 100, 100);
+        Rectangle Daisy1 = new Rectangle(20, 200, 80, 80);
+        Rectangle Daisy2 = new Rectangle(120, 200, 80, 80);
+        Rectangle Daisy3 = new Rectangle(220, 200, 80, 80);
+        Rectangle Allium1 = new Rectangle(390, 200, 80, 80);
+        Rectangle Allium2 = new Rectangle(490, 200, 80, 80);
+        Rectangle Allum3 = new Rectangle(590, 200, 80, 80);
+
 
         Image Tree = Properties.Resources.Tree;
         Image Apple = Properties.Resources.Apple;
         Image Nashi = Properties.Resources.Nashi;
         Image Peach = Properties.Resources.Peach;
+        Image Daisy = Properties.Resources.Daisy;
+        Image Allium = Properties.Resources.Allium;
+        Image Sunflower = Properties.Resources.Sunflower;
+        Image Lavender = Properties.Resources.Lavender;
+        Image Growing = Properties.Resources.Growing;
+
 
 
         int money = 500;
@@ -37,7 +49,49 @@ namespace Harvest_Game
 
 
         Graphics g;
-        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3;
+        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3, allium1, allium2, allium3;
+
+        private void AlliumGrow3_Tick(object sender, EventArgs e)
+        {
+            allium3 = true;
+            AlliumGrow3.Enabled = false;
+            Garden.Invalidate();
+        }
+
+        private void AlliumGrow2_Tick(object sender, EventArgs e)
+        {
+            allium2 = true;
+            AlliumGrow2.Enabled = false;
+            Garden.Invalidate();
+        }
+
+        private void AlliumGrow1_Tick(object sender, EventArgs e)
+        {
+            allium1 = true;
+            AlliumGrow1.Enabled = false;
+            Garden.Invalidate();
+        }
+
+        private void DaisyGrow3_Tick(object sender, EventArgs e)
+        {
+            daisy3 = true;
+            DaisyGrow3.Enabled = false;
+            Garden.Invalidate();
+        }
+
+        private void DaisyGrow2_Tick(object sender, EventArgs e)
+        {
+            daisy2 = true;
+            DaisyGrow2.Enabled = false;
+            Garden.Invalidate();
+        }
+
+        private void DaisyGrow1_Tick(object sender, EventArgs e)
+        {
+            daisy1 = true;
+            DaisyGrow1.Enabled = false;
+            Garden.Invalidate();
+        }
 
         private void Rent_Tick(object sender, EventArgs e)
         {
@@ -47,7 +101,7 @@ namespace Harvest_Game
             down = false;
             Rent.Enabled = false;
             MessageBox.Show("Rent is due! The funds have been taken from your account.");
-            money = money - 1000;
+            money = money - 600;
             Rent.Enabled = true;
 
         }
@@ -386,11 +440,99 @@ namespace Harvest_Game
             }
             if (daisy1 == true)
             {
-                g.DrawImage(Peach, Daisy1);
+                g.DrawImage(Daisy, Daisy1);
             }
-            if (peach1 == false)
+            if (daisy1 == false)
             {
-                g.DrawImage(Tree, Daisy1);
+                g.DrawImage(Growing, Daisy1);
+            }
+
+            if (SpriteRec.IntersectsWith(Daisy2)) //Daisy Two Code
+            {
+                if (interact == true)
+                {
+                    if (daisy2 == true)
+                    {
+                        interact = false;
+                        DaisyGrow2.Enabled = true;
+                        money = money + 50;
+                        daisy2 = false;
+                    }
+                }
+            }
+            if (daisy2 == true)
+            {
+                g.DrawImage(Daisy, Daisy2);
+            }
+            if (daisy2 == false)
+            {
+                g.DrawImage(Growing, Daisy2);
+            }
+
+            if (SpriteRec.IntersectsWith(Daisy3)) //Daisy Three Code
+            {
+                if (interact == true)
+                {
+                    if (daisy3 == true)
+                    {
+                        interact = false;
+                        DaisyGrow3.Enabled = true;
+                        money = money + 50;
+                        daisy3 = false;
+                    }
+                }
+            }
+            if (daisy3 == true)
+            {
+                g.DrawImage(Daisy, Daisy3);
+            }
+            if (daisy3 == false)
+            {
+                g.DrawImage(Growing, Daisy3);
+            }
+
+            if (SpriteRec.IntersectsWith(Allium1)) //Allium One Code
+            {
+                if (interact == true)
+                {
+                    if (allium1 == true)
+                    {
+                        interact = false;
+                        AlliumGrow1.Enabled = true;
+                        money = money + 50;
+                        allium1 = false;
+                    }
+                }
+            }
+            if (allium1 == true)
+            {
+                g.DrawImage(Allium, Allium1);
+            }
+            if (allium1 == false)
+            {
+                g.DrawImage(Growing, Allium1);
+            }
+
+            if (SpriteRec.IntersectsWith(Allium1)) //Allium One Code
+            {
+                if (interact == true)
+                {
+                    if (allium1 == true)
+                    {
+                        interact = false;
+                        AlliumGrow1.Enabled = true;
+                        money = money + 50;
+                        allium1 = false;
+                    }
+                }
+            }
+            if (allium1 == true)
+            {
+                g.DrawImage(Allium, Allium1);
+            }
+            if (allium1 == false)
+            {
+                g.DrawImage(Growing, Allium1);
             }
 
             if (left == false) //Sprite looks different depending on what direction it is facing

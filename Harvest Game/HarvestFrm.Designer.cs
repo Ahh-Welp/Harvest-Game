@@ -43,6 +43,11 @@ namespace Harvest_Game
             this.TreeTime6 = new System.Windows.Forms.Timer(this.components);
             this.Rent = new System.Windows.Forms.Timer(this.components);
             this.DaisyGrow1 = new System.Windows.Forms.Timer(this.components);
+            this.DaisyGrow2 = new System.Windows.Forms.Timer(this.components);
+            this.DaisyGrow3 = new System.Windows.Forms.Timer(this.components);
+            this.AlliumGrow1 = new System.Windows.Forms.Timer(this.components);
+            this.AlliumGrow2 = new System.Windows.Forms.Timer(this.components);
+            this.AlliumGrow3 = new System.Windows.Forms.Timer(this.components);
             this.Garden.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,7 +139,39 @@ namespace Harvest_Game
             // 
             // DaisyGrow1
             // 
-            this.DaisyGrow1.Interval = 1000;
+            this.DaisyGrow1.Enabled = true;
+            this.DaisyGrow1.Interval = 5000;
+            this.DaisyGrow1.Tick += new System.EventHandler(this.DaisyGrow1_Tick);
+            // 
+            // DaisyGrow2
+            // 
+            this.DaisyGrow2.Enabled = true;
+            this.DaisyGrow2.Interval = 5000;
+            this.DaisyGrow2.Tick += new System.EventHandler(this.DaisyGrow2_Tick);
+            // 
+            // DaisyGrow3
+            // 
+            this.DaisyGrow3.Enabled = true;
+            this.DaisyGrow3.Interval = 5000;
+            this.DaisyGrow3.Tick += new System.EventHandler(this.DaisyGrow3_Tick);
+            // 
+            // AlliumGrow1
+            // 
+            this.AlliumGrow1.Enabled = true;
+            this.AlliumGrow1.Interval = 5000;
+            this.AlliumGrow1.Tick += new System.EventHandler(this.AlliumGrow1_Tick);
+            // 
+            // AlliumGrow2
+            // 
+            this.AlliumGrow2.Enabled = true;
+            this.AlliumGrow2.Interval = 5000;
+            this.AlliumGrow2.Tick += new System.EventHandler(this.AlliumGrow2_Tick);
+            // 
+            // AlliumGrow3
+            // 
+            this.AlliumGrow3.Enabled = true;
+            this.AlliumGrow3.Interval = 5000;
+            this.AlliumGrow3.Tick += new System.EventHandler(this.AlliumGrow3_Tick);
             // 
             // HarvestFrm
             // 
@@ -169,6 +206,11 @@ namespace Harvest_Game
         private System.Windows.Forms.Timer TreeTime6;
         private System.Windows.Forms.Timer Rent;
         private System.Windows.Forms.Timer DaisyGrow1;
+        private System.Windows.Forms.Timer DaisyGrow2;
+        private System.Windows.Forms.Timer DaisyGrow3;
+        private System.Windows.Forms.Timer AlliumGrow1;
+        private System.Windows.Forms.Timer AlliumGrow2;
+        private System.Windows.Forms.Timer AlliumGrow3;
     }
 }
 
