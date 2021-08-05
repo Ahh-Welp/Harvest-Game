@@ -51,6 +51,9 @@ namespace Harvest_Game
             this.LavenderGrow3 = new System.Windows.Forms.Timer(this.components);
             this.LavenderGrow2 = new System.Windows.Forms.Timer(this.components);
             this.LavenderGrow1 = new System.Windows.Forms.Timer(this.components);
+            this.SunflowerGrow1 = new System.Windows.Forms.Timer(this.components);
+            this.SunflowerGrow2 = new System.Windows.Forms.Timer(this.components);
+            this.SunflowerGrow3 = new System.Windows.Forms.Timer(this.components);
             this.Garden.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -180,16 +183,34 @@ namespace Harvest_Game
             // 
             this.LavenderGrow3.Enabled = true;
             this.LavenderGrow3.Interval = 5000;
+            this.LavenderGrow3.Tick += new System.EventHandler(this.LavenderGrow3_Tick);
             // 
             // LavenderGrow2
             // 
             this.LavenderGrow2.Enabled = true;
             this.LavenderGrow2.Interval = 5000;
+            this.LavenderGrow2.Tick += new System.EventHandler(this.LavenderGrow2_Tick);
             // 
             // LavenderGrow1
             // 
             this.LavenderGrow1.Enabled = true;
             this.LavenderGrow1.Interval = 5000;
+            this.LavenderGrow1.Tick += new System.EventHandler(this.LavenderGrow1_Tick_1);
+            // 
+            // SunflowerGrow1
+            // 
+            this.SunflowerGrow1.Enabled = true;
+            this.SunflowerGrow1.Interval = 5000;
+            // 
+            // SunflowerGrow2
+            // 
+            this.SunflowerGrow2.Enabled = true;
+            this.SunflowerGrow2.Interval = 5000;
+            // 
+            // SunflowerGrow3
+            // 
+            this.SunflowerGrow3.Enabled = true;
+            this.SunflowerGrow3.Interval = 5000;
             // 
             // HarvestFrm
             // 
@@ -232,6 +253,9 @@ namespace Harvest_Game
         private System.Windows.Forms.Timer LavenderGrow3;
         private System.Windows.Forms.Timer LavenderGrow2;
         private System.Windows.Forms.Timer LavenderGrow1;
+        private System.Windows.Forms.Timer SunflowerGrow1;
+        private System.Windows.Forms.Timer SunflowerGrow2;
+        private System.Windows.Forms.Timer SunflowerGrow3;
     }
 }
 

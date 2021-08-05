@@ -54,12 +54,27 @@ namespace Harvest_Game
         Graphics g;
         bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3, allium1, allium2, allium3, lavender1, lavender2, lavender3;
 
-        private void LavenderGrow1_Tick(object sender, EventArgs e)
+        private void LavenderGrow3_Tick(object sender, EventArgs e)
+        {
+            lavender3 = true;
+            LavenderGrow3.Enabled = false;
+            Garden.Invalidate();
+        }
+
+        private void LavenderGrow2_Tick(object sender, EventArgs e)
+        {
+            lavender2 = true;
+            LavenderGrow2.Enabled = false;
+            Garden.Invalidate();
+        }
+
+        private void LavenderGrow1_Tick_1(object sender, EventArgs e)
         {
             lavender1 = true;
             LavenderGrow1.Enabled = false;
             Garden.Invalidate();
         }
+
 
         private void AlliumGrow3_Tick(object sender, EventArgs e)
         {
@@ -590,6 +605,50 @@ namespace Harvest_Game
             if (lavender1 == false)
             {
                 g.DrawImage(Growing, Lavender1);
+            }
+
+            if (SpriteRec.IntersectsWith(Lavender2)) //Lavender Two Code
+            {
+                if (interact == true)
+                {
+                    if (lavender2 == true)
+                    {
+                        interact = false;
+                        LavenderGrow2.Enabled = true;
+                        money = money + 50;
+                        lavender2 = false;
+                    }
+                }
+            }
+            if (lavender2 == true)
+            {
+                g.DrawImage(Lavender, Lavender2);
+            }
+            if (lavender2 == false)
+            {
+                g.DrawImage(Growing, Lavender2);
+            }
+
+            if (SpriteRec.IntersectsWith(Lavender3)) //Lavender Three Code
+            {
+                if (interact == true)
+                {
+                    if (lavender3 == true)
+                    {
+                        interact = false;
+                        LavenderGrow3.Enabled = true;
+                        money = money + 50;
+                        lavender3 = false;
+                    }
+                }
+            }
+            if (lavender3 == true)
+            {
+                g.DrawImage(Lavender, Lavender3);
+            }
+            if (lavender3 == false)
+            {
+                g.DrawImage(Growing, Lavender3);
             }
 
             if (left == false) //Sprite looks different depending on what direction it is facing
