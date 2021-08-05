@@ -33,7 +33,9 @@ namespace Harvest_Game
         Rectangle Lavender1 = new Rectangle(20, 350, 80, 80);
         Rectangle Lavender2 = new Rectangle(120, 350, 80, 80);
         Rectangle Lavender3 = new Rectangle(220, 350, 80, 80);
-
+        Rectangle Sunflower1 = new Rectangle(390, 350, 80, 80);
+        Rectangle Sunflower2 = new Rectangle(490, 350, 80, 80);
+        Rectangle Sunflower3 = new Rectangle(590, 350, 80, 80);
 
         Image Tree = Properties.Resources.Tree;
         Image Apple = Properties.Resources.Apple;
@@ -45,14 +47,31 @@ namespace Harvest_Game
         Image Lavender = Properties.Resources.Lavender;
         Image Growing = Properties.Resources.Growing;
 
-
-
         int money = 500;
 
-
-
         Graphics g;
-        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3, allium1, allium2, allium3, lavender1, lavender2, lavender3;
+        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3, allium1, allium2, allium3, lavender1, lavender2, lavender3, sunflower1, sunflower2, sunflower3;
+
+        private void SunflowerGrow3_Tick(object sender, EventArgs e)
+        {
+            sunflower3 = true;
+            SunflowerGrow3.Enabled = false;
+            Garden.Invalidate();
+        }
+
+        private void SunflowerGrow2_Tick(object sender, EventArgs e)
+        {
+            sunflower2 = true;
+            SunflowerGrow2.Enabled = false;
+            Garden.Invalidate();
+        }
+
+        private void SunflowerGrow1_Tick(object sender, EventArgs e)
+        {
+            sunflower1 = true;
+            SunflowerGrow1.Enabled = false;
+            Garden.Invalidate();
+        }
 
         private void LavenderGrow3_Tick(object sender, EventArgs e)
         {
@@ -74,7 +93,6 @@ namespace Harvest_Game
             LavenderGrow1.Enabled = false;
             Garden.Invalidate();
         }
-
 
         private void AlliumGrow3_Tick(object sender, EventArgs e)
         {
@@ -649,6 +667,72 @@ namespace Harvest_Game
             if (lavender3 == false)
             {
                 g.DrawImage(Growing, Lavender3);
+            }
+
+            if (SpriteRec.IntersectsWith(Sunflower1)) //Sunflower One Code
+            {
+                if (interact == true)
+                {
+                    if (sunflower1 == true)
+                    {
+                        interact = false;
+                        SunflowerGrow1.Enabled = true;
+                        money = money + 50;
+                        sunflower1 = false;
+                    }
+                }
+            }
+            if (sunflower1 == true)
+            {
+                g.DrawImage(Sunflower, Sunflower1);
+            }
+            if (sunflower1 == false)
+            {
+                g.DrawImage(Growing, Sunflower1);
+            }
+
+            if (SpriteRec.IntersectsWith(Sunflower2)) //Sunflower Two Code
+            {
+                if (interact == true)
+                {
+                    if (sunflower2 == true)
+                    {
+                        interact = false;
+                        SunflowerGrow2.Enabled = true;
+                        money = money + 50;
+                        sunflower2 = false;
+                    }
+                }
+            }
+            if (sunflower2 == true)
+            {
+                g.DrawImage(Sunflower, Sunflower2);
+            }
+            if (sunflower2 == false)
+            {
+                g.DrawImage(Growing, Sunflower2);
+            }
+
+            if (SpriteRec.IntersectsWith(Sunflower3)) //Sunflower Three Code
+            {
+                if (interact == true)
+                {
+                    if (sunflower3 == true)
+                    {
+                        interact = false;
+                        SunflowerGrow3.Enabled = true;
+                        money = money + 50;
+                        sunflower3 = false;
+                    }
+                }
+            }
+            if (sunflower3 == true)
+            {
+                g.DrawImage(Sunflower, Sunflower3);
+            }
+            if (sunflower3 == false)
+            {
+                g.DrawImage(Growing, Sunflower3);
             }
 
             if (left == false) //Sprite looks different depending on what direction it is facing

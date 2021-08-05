@@ -201,16 +201,19 @@ namespace Harvest_Game
             // 
             this.SunflowerGrow1.Enabled = true;
             this.SunflowerGrow1.Interval = 5000;
+            this.SunflowerGrow1.Tick += new System.EventHandler(this.SunflowerGrow1_Tick);
             // 
             // SunflowerGrow2
             // 
             this.SunflowerGrow2.Enabled = true;
             this.SunflowerGrow2.Interval = 5000;
+            this.SunflowerGrow2.Tick += new System.EventHandler(this.SunflowerGrow2_Tick);
             // 
             // SunflowerGrow3
             // 
             this.SunflowerGrow3.Enabled = true;
             this.SunflowerGrow3.Interval = 5000;
+            this.SunflowerGrow3.Tick += new System.EventHandler(this.SunflowerGrow3_Tick);
             // 
             // HarvestFrm
             // 
