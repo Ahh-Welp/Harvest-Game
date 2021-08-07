@@ -14,10 +14,6 @@ namespace Harvest_Game
     public partial class HarvestFrm : Form
     {
         Rectangle SpriteRec = new Rectangle(0, 0, 60, 60);
-        Image Front = Properties.Resources.Front;
-        Image Back = Properties.Resources.Back;
-        Image SpriteLeft = Properties.Resources.Left;
-        Image SpriteRight = Properties.Resources.Right;
         Rectangle Tree1 = new Rectangle(20, 50, 100, 100);
         Rectangle Tree2 = new Rectangle(120, 50, 100, 100);
         Rectangle Tree3 = new Rectangle(220, 50, 100, 100);
@@ -37,6 +33,10 @@ namespace Harvest_Game
         Rectangle Sunflower2 = new Rectangle(490, 350, 80, 80);
         Rectangle Sunflower3 = new Rectangle(590, 350, 80, 80);
 
+        Image Front = Properties.Resources.Front;
+        Image Back = Properties.Resources.Back;
+        Image SpriteLeft = Properties.Resources.Left;
+        Image SpriteRight = Properties.Resources.Right;
         Image Tree = Properties.Resources.Tree;
         Image Apple = Properties.Resources.Apple;
         Image Nashi = Properties.Resources.Nashi;
@@ -50,7 +50,20 @@ namespace Harvest_Game
         int money = 500;
 
         Graphics g;
-        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3, allium1, allium2, allium3, lavender1, lavender2, lavender3, sunflower1, sunflower2, sunflower3;
+        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3, allium1, allium2, allium3, lavender1, lavender2, lavender3, sunflower1, sunflower2, sunflower3, hardmode;
+
+        private void HardMode_Click(object sender, EventArgs e)
+        {
+            if (hardmode == true)
+            {
+                hardmode = false;
+            }
+            if (hardmode == false)
+            {
+               MessageBox.Show("Rent is now doubled");
+               hardmode = true;
+            }
+        }
 
         private void SunflowerGrow3_Tick(object sender, EventArgs e)
         {
@@ -330,8 +343,27 @@ namespace Harvest_Game
                 "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
                 "Rent is collected after a certain amount of time. There will be a message box to show you remind you that rent is being paid!" + Environment.NewLine +
                 "Press 'I' to see this information box again." + Environment.NewLine +
+                "The button on the bottom right corner enables hard mode. Press on it for more details." + Environment.NewLine +
                 "Have fun!");
             Rent.Enabled = true;
+            peach1 = true;
+            peach2 = true;
+            nashi1 = true;
+            nashi2 = true;
+            apple1 = true;
+            apple2 = true;
+            daisy1 = true;
+            daisy2 = true;
+            daisy3 = true;
+            allium1 = true;
+            allium2 = true;
+            allium3 = true;
+            lavender1 = true;
+            lavender2 = true;
+            lavender3 = true;
+            sunflower1 = true;
+            sunflower2 = true;
+            sunflower3 = true;
         }
 
         private void Garden_Paint(object sender, PaintEventArgs e)
