@@ -51,21 +51,35 @@ namespace Harvest_Game
         int mortgage = 10000;
 
         Graphics g;
-        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3, allium1, allium2, allium3, lavender1, lavender2, lavender3, sunflower1, sunflower2, sunflower3, hardmode;
+        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3, allium1, allium2, allium3, lavender1, lavender2, lavender3, sunflower1, sunflower2, sunflower3, completed;
 
         private void Mortgage_Tick(object sender, EventArgs e)
         {
-            if (mortgage > 1)
+            if (money >= 1000)
+            {
+                if (mortgage > 1)
                 {
-                left = false;
-                right = false;
-                up = false;
-                down = false;
-                Mortgage.Enabled = false;
-                MessageBox.Show("Payment is due! The funds have been taken from your account.");
-                money = money - 1000;
-                mortgage = mortgage - 1000;
-                Mortgage.Enabled = true;
+                    left = false;
+                    right = false;
+                    up = false;
+                    down = false;
+                    Mortgage.Enabled = false;
+                    MessageBox.Show("Payment is due! The funds have been taken from your account.");
+                    money = money - 1000;
+                    mortgage = mortgage - 1000;
+                    Mortgage.Enabled = true;
+                }
+            }
+            if (completed == false)
+            {
+                if (mortgage == 0)
+                {
+                    completed = true;
+                    MessageBox.Show("Congratulations!" + Environment.NewLine +
+                        "" + Environment.NewLine +
+                        "You have paid off your mortgage! You no longer have to pay any more payments. You can continue playing if you would like, but there is nothing more than harvesting fruit and flowers :D"
+                        + Environment.NewLine + "If you have gotten this far and are seeing this message, I really hope you enjoyed the game. Let me know if there is anything you would want me to change or anything you liked!");
+                }
             }
         }
 
@@ -262,11 +276,13 @@ namespace Harvest_Game
                 up = false;
                 down = false;
                 MessageBox.Show("Instructions for play: " +
-                    "Use WASD or Arrow Keys to move the character. Use enter to interact with the things around you!" + Environment.NewLine +
-                    "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
-                    "Rent is collected after a certain amount of time. The amount that you have to pay for rent is $1000 There will be a message box to show you remind you that rent is being paid!" + Environment.NewLine +
-                    "Press 'I' to see this information box again." + Environment.NewLine +
-                    "Have fun!");
+                                "Use WASD or Arrow Keys to move the character. Use enter to interact with the things around you!" + Environment.NewLine +
+                                "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
+                                "Your mortgage is collected after a certain amount of time. There will be a message box to show you remind you that your payment is due." + Environment.NewLine +
+                                "Payment will not be taken if you do not have enough money." + Environment.NewLine +
+                                "Once you have paid off your mortgage, you no longer have to pay anything!" + Environment.NewLine +
+                                "Press 'I' to see this information box again." + Environment.NewLine +
+                                "Have fun!");
             }
 
         }
@@ -333,9 +349,9 @@ namespace Harvest_Game
                 "Use WASD or Arrow Keys to move the character. Use enter to interact with the things around you!" + Environment.NewLine +
                 "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
                 "Your mortgage is collected after a certain amount of time. There will be a message box to show you remind you that your payment is due." + Environment.NewLine +
+                "Payment will not be taken if you do not have enough money."+Environment.NewLine +
                 "Once you have paid off your mortgage, you no longer have to pay anything!" + Environment.NewLine +
                 "Press 'I' to see this information box again." + Environment.NewLine +
-                "The button on the bottom right corner enables hard mode. Press on it for more details." + Environment.NewLine +
                 "Have fun!");
             Mortgage.Enabled = true;
             peach1 = true;
