@@ -48,20 +48,24 @@ namespace Harvest_Game
         Image Growing = Properties.Resources.Growing;
 
         int money = 500;
+        int mortgage = 10000;
 
         Graphics g;
         bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3, allium1, allium2, allium3, lavender1, lavender2, lavender3, sunflower1, sunflower2, sunflower3, hardmode;
 
-        private void HardMode_Click(object sender, EventArgs e)
+        private void Mortgage_Tick(object sender, EventArgs e)
         {
-            if (hardmode == true)
-            {
-                hardmode = false;
-            }
-            if (hardmode == false)
-            {
-               MessageBox.Show("Rent is now doubled");
-               hardmode = true;
+            if (mortgage > 1)
+                {
+                left = false;
+                right = false;
+                up = false;
+                down = false;
+                Mortgage.Enabled = false;
+                MessageBox.Show("Payment is due! The funds have been taken from your account.");
+                money = money - 1000;
+                mortgage = mortgage - 1000;
+                Mortgage.Enabled = true;
             }
         }
 
@@ -147,19 +151,6 @@ namespace Harvest_Game
             daisy1 = true;
             DaisyGrow1.Enabled = false;
             Garden.Invalidate();
-        }
-
-        private void Rent_Tick(object sender, EventArgs e)
-        {
-            left = false;
-            right = false;
-            up = false;
-            down = false;
-            Rent.Enabled = false;
-            MessageBox.Show("Rent is due! The funds have been taken from your account.");
-            money = money - 600;
-            Rent.Enabled = true;
-
         }
 
         private void TreeTime6_Tick(object sender, EventArgs e)
@@ -337,15 +328,16 @@ namespace Harvest_Game
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
                 | BindingFlags.Instance | BindingFlags.NonPublic, null, Garden,
                 new object[] { true });
-            Rent.Enabled = false;
+            Mortgage.Enabled = false;
             MessageBox.Show("Instructions for play: " +
                 "Use WASD or Arrow Keys to move the character. Use enter to interact with the things around you!" + Environment.NewLine +
                 "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
-                "Rent is collected after a certain amount of time. There will be a message box to show you remind you that rent is being paid!" + Environment.NewLine +
+                "Your mortgage is collected after a certain amount of time. There will be a message box to show you remind you that your payment is due." + Environment.NewLine +
+                "Once you have paid off your mortgage, you no longer have to pay anything!" + Environment.NewLine +
                 "Press 'I' to see this information box again." + Environment.NewLine +
                 "The button on the bottom right corner enables hard mode. Press on it for more details." + Environment.NewLine +
                 "Have fun!");
-            Rent.Enabled = true;
+            Mortgage.Enabled = true;
             peach1 = true;
             peach2 = true;
             nashi1 = true;
@@ -364,12 +356,14 @@ namespace Harvest_Game
             sunflower1 = true;
             sunflower2 = true;
             sunflower3 = true;
+            front = true;
         }
 
         private void Garden_Paint(object sender, PaintEventArgs e)
         {
             g = e.Graphics;
             MoneyLbl.Text = money + "";
+            MortgageNumLbl.Text = mortgage + "";
             if (SpriteRec.IntersectsWith(Tree1)) //Tree One Code
             {
                 if (interact == true)

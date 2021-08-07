@@ -41,7 +41,7 @@ namespace Harvest_Game
             this.TreeTime4 = new System.Windows.Forms.Timer(this.components);
             this.TreeTime5 = new System.Windows.Forms.Timer(this.components);
             this.TreeTime6 = new System.Windows.Forms.Timer(this.components);
-            this.Rent = new System.Windows.Forms.Timer(this.components);
+            this.Mortgage = new System.Windows.Forms.Timer(this.components);
             this.DaisyGrow1 = new System.Windows.Forms.Timer(this.components);
             this.DaisyGrow2 = new System.Windows.Forms.Timer(this.components);
             this.DaisyGrow3 = new System.Windows.Forms.Timer(this.components);
@@ -54,12 +54,16 @@ namespace Harvest_Game
             this.SunflowerGrow1 = new System.Windows.Forms.Timer(this.components);
             this.SunflowerGrow2 = new System.Windows.Forms.Timer(this.components);
             this.SunflowerGrow3 = new System.Windows.Forms.Timer(this.components);
+            this.MortgageLbl = new System.Windows.Forms.Label();
+            this.MortgageNumLbl = new System.Windows.Forms.Label();
             this.Garden.SuspendLayout();
             this.SuspendLayout();
             // 
             // Garden
             // 
             this.Garden.BackColor = System.Drawing.Color.ForestGreen;
+            this.Garden.Controls.Add(this.MortgageNumLbl);
+            this.Garden.Controls.Add(this.MortgageLbl);
             this.Garden.Controls.Add(this.MoneyLbl);
             this.Garden.Controls.Add(this.Money);
             this.Garden.Controls.Add(this.label1);
@@ -137,11 +141,11 @@ namespace Harvest_Game
             this.TreeTime6.Interval = 5000;
             this.TreeTime6.Tick += new System.EventHandler(this.TreeTime6_Tick);
             // 
-            // Rent
+            // Mortgage
             // 
-            this.Rent.Enabled = true;
-            this.Rent.Interval = 20000;
-            this.Rent.Tick += new System.EventHandler(this.Rent_Tick);
+            this.Mortgage.Enabled = true;
+            this.Mortgage.Interval = 20000;
+            this.Mortgage.Tick += new System.EventHandler(this.Mortgage_Tick);
             // 
             // DaisyGrow1
             // 
@@ -215,6 +219,24 @@ namespace Harvest_Game
             this.SunflowerGrow3.Interval = 5000;
             this.SunflowerGrow3.Tick += new System.EventHandler(this.SunflowerGrow3_Tick);
             // 
+            // MortgageLbl
+            // 
+            this.MortgageLbl.AutoSize = true;
+            this.MortgageLbl.Location = new System.Drawing.Point(230, 520);
+            this.MortgageLbl.Name = "MortgageLbl";
+            this.MortgageLbl.Size = new System.Drawing.Size(122, 15);
+            this.MortgageLbl.TabIndex = 3;
+            this.MortgageLbl.Text = "Mortgage Remaining:";
+            // 
+            // MortgageNumLbl
+            // 
+            this.MortgageNumLbl.AutoSize = true;
+            this.MortgageNumLbl.Location = new System.Drawing.Point(358, 520);
+            this.MortgageNumLbl.Name = "MortgageNumLbl";
+            this.MortgageNumLbl.Size = new System.Drawing.Size(37, 15);
+            this.MortgageNumLbl.TabIndex = 4;
+            this.MortgageNumLbl.Text = "10000";
+            // 
             // HarvestFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -246,7 +268,7 @@ namespace Harvest_Game
         private System.Windows.Forms.Timer TreeTime4;
         private System.Windows.Forms.Timer TreeTime5;
         private System.Windows.Forms.Timer TreeTime6;
-        private System.Windows.Forms.Timer Rent;
+        private System.Windows.Forms.Timer Mortgage;
         private System.Windows.Forms.Timer DaisyGrow1;
         private System.Windows.Forms.Timer DaisyGrow2;
         private System.Windows.Forms.Timer DaisyGrow3;
@@ -259,6 +281,8 @@ namespace Harvest_Game
         private System.Windows.Forms.Timer SunflowerGrow1;
         private System.Windows.Forms.Timer SunflowerGrow2;
         private System.Windows.Forms.Timer SunflowerGrow3;
+        private System.Windows.Forms.Label MortgageNumLbl;
+        private System.Windows.Forms.Label MortgageLbl;
     }
 }
 
