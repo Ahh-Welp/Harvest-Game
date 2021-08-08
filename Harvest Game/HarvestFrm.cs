@@ -55,7 +55,33 @@ namespace Harvest_Game
 
         Graphics g;
         // all the crop ones are for when they are grown and the image is drawn. Completed is for when the mortgage is finished and stops the completion message from showing up more than once.
-        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3, allium1, allium2, allium3, lavender1, lavender2, lavender3, sunflower1, sunflower2, sunflower3, completed;
+        bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3, allium1, allium2, allium3, lavender1, lavender2, lavender3, sunflower1, sunflower2, sunflower3, completed, name;
+
+        private void TxtName_TextChanged(object sender, EventArgs e)
+        {
+            string context = TxtName.Text;
+            bool isletter = true;
+            if (name == true)
+            {//for loop checks for letters as characters are entered
+                for (int i = 0; i < context.Length; i++)
+                {
+                    if (!char.IsLetter(context[i]))// if current character not a letter
+                    {
+                        isletter = false;//make isletter false
+                        break; // exit the for loop
+                    }
+
+                }
+
+                // if not a letter clear the textbox and focus on it
+                // to enter name again
+                if (isletter == false)
+                {
+                    TxtName.Clear();
+                    TxtName.Focus();
+                }
+            }
+        }
 
         private void Mortgage_Tick(object sender, EventArgs e)
         {
@@ -273,7 +299,14 @@ namespace Harvest_Game
             }
             if (e.KeyData == Keys.Enter) 
             {
-                interact = true; 
+                interact = true;
+                
+                if (name == true) // if the player has not finished putting their name in
+                {
+                    TxtName.Enabled = false; //disables the textbox
+                    name = false; 
+                    Mortgage.Enabled = true; // enable money grabber timer
+                }
             }
             if (e.KeyData == Keys.Space)
             {
@@ -281,18 +314,21 @@ namespace Harvest_Game
             }
             if (e.KeyData == Keys.I)
             {
-                left = false; // stops player from moving
-                right = false;
-                up = false;
-                down = false;
-                MessageBox.Show("Instructions for play: " +
-                                "Use WASD or Arrow Keys to move the character. Use enter or space bar to interact with the things around you!" + Environment.NewLine +
-                                "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
-                                "Your mortgage is collected after a certain amount of time. There will be a message box to show you remind you that your payment is due." + Environment.NewLine +
-                                "Payment will not be taken if you do not have enough money." + Environment.NewLine +
-                                "Once you have paid off your mortgage, you no longer have to pay anything!" + Environment.NewLine +
-                                "Press 'I' to see this information box again." + Environment.NewLine +
-                                "Have fun!");
+                if (name == false)
+                {
+                    left = false; // stops player from moving
+                    right = false;
+                    up = false;
+                    down = false;
+                    MessageBox.Show("Instructions for play: " +
+                                    "Use WASD or Arrow Keys to move the character. Use enter or space bar to interact with the things around you!" + Environment.NewLine +
+                                    "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
+                                    "Your mortgage is collected after a certain amount of time. There will be a message box to show you remind you that your payment is due." + Environment.NewLine +
+                                    "Payment will not be taken if you do not have enough money." + Environment.NewLine +
+                                    "Once you have paid off your mortgage, you no longer have to pay anything!" + Environment.NewLine +
+                                    "Press 'I' to see this information box again." + Environment.NewLine +
+                                    "Have fun!");
+                }
             }
 
         }
@@ -360,9 +396,9 @@ namespace Harvest_Game
                 "Your mortgage is collected after a certain amount of time. There will be a message box to show you remind you that your payment is due." + Environment.NewLine +
                 "Payment will not be taken if you do not have enough money."+Environment.NewLine +
                 "Once you have paid off your mortgage, you no longer have to pay anything!" + Environment.NewLine +
+                "To begin enter your name and then press enter. Your name can only consist of letters. Be careful, because you can't change it afterwards!" +Environment.NewLine +
                 "Press 'I' to see this information box again." + Environment.NewLine +
                 "Have fun!"); // show instructions
-            Mortgage.Enabled = true; // enable money grabber timer
             peach1 = true; // have all of the crops grown
             peach2 = true;
             nashi1 = true;
@@ -381,7 +417,9 @@ namespace Harvest_Game
             sunflower1 = true;
             sunflower2 = true;
             sunflower3 = true;
+            name = true; // this is for slecting and deselecting the textbox
             front = true; // draw sprite front first
+            TxtName.Focus();
         }
 
         private void Garden_Paint(object sender, PaintEventArgs e)

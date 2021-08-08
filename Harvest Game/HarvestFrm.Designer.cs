@@ -57,12 +57,16 @@ namespace Harvest_Game
             this.SunflowerGrow1 = new System.Windows.Forms.Timer(this.components);
             this.SunflowerGrow2 = new System.Windows.Forms.Timer(this.components);
             this.SunflowerGrow3 = new System.Windows.Forms.Timer(this.components);
+            this.NameLbl = new System.Windows.Forms.Label();
+            this.TxtName = new System.Windows.Forms.TextBox();
             this.Garden.SuspendLayout();
             this.SuspendLayout();
             // 
             // Garden
             // 
             this.Garden.BackColor = System.Drawing.Color.Green;
+            this.Garden.Controls.Add(this.TxtName);
+            this.Garden.Controls.Add(this.NameLbl);
             this.Garden.Controls.Add(this.Info);
             this.Garden.Controls.Add(this.MortgageNumLbl);
             this.Garden.Controls.Add(this.MortgageLbl);
@@ -234,6 +238,24 @@ namespace Harvest_Game
             this.SunflowerGrow3.Interval = 5000;
             this.SunflowerGrow3.Tick += new System.EventHandler(this.SunflowerGrow3_Tick);
             // 
+            // NameLbl
+            // 
+            this.NameLbl.AutoSize = true;
+            this.NameLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NameLbl.Location = new System.Drawing.Point(425, 14);
+            this.NameLbl.Name = "NameLbl";
+            this.NameLbl.Size = new System.Drawing.Size(55, 21);
+            this.NameLbl.TabIndex = 6;
+            this.NameLbl.Text = "Name:";
+            // 
+            // TxtName
+            // 
+            this.TxtName.Location = new System.Drawing.Point(486, 12);
+            this.TxtName.Name = "TxtName";
+            this.TxtName.Size = new System.Drawing.Size(100, 23);
+            this.TxtName.TabIndex = 7;
+            this.TxtName.TextChanged += new System.EventHandler(this.TxtName_TextChanged);
+            // 
             // HarvestFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -281,6 +303,8 @@ namespace Harvest_Game
         private System.Windows.Forms.Label MortgageNumLbl;
         private System.Windows.Forms.Label MortgageLbl;
         private System.Windows.Forms.Label Info;
+        private System.Windows.Forms.TextBox TxtName;
+        private System.Windows.Forms.Label NameLbl;
     }
 }
 
