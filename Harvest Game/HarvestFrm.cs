@@ -12,16 +12,18 @@ using System.Reflection;
 namespace Harvest_Game
 {
     public partial class HarvestFrm : Form
-    { //These are the rectangles for the player and all the crops. 
-        Rectangle SpriteRec = new Rectangle(0, 0, 60, 60);
-        Rectangle Tree1 = new Rectangle(20, 50, 100, 100);
-        Rectangle Tree2 = new Rectangle(120, 50, 100, 100);
-        Rectangle Tree3 = new Rectangle(220, 50, 100, 100);
-        Rectangle Tree4 = new Rectangle(390, 50, 100, 100);
-        Rectangle Tree5 = new Rectangle(490, 50, 100, 100);
-        Rectangle Tree6 = new Rectangle(590, 50, 100, 100);
-        Rectangle Daisy1 = new Rectangle(20, 200, 80, 80);
-        Rectangle Daisy2 = new Rectangle(120, 200, 80, 80);
+    { 
+        //Declare the variables to be used
+        //These are the rectangles for the player and all the crops.
+        Rectangle SpriteRec = new Rectangle(310, 80, 60, 60); //Sprite rectangle
+        Rectangle Tree1 = new Rectangle(20, 50, 100, 100); // tree 1 rectangle
+        Rectangle Tree2 = new Rectangle(120, 50, 100, 100); // tree 2 rectangle
+        Rectangle Tree3 = new Rectangle(220, 50, 100, 100); // tree 3 rectangle
+        Rectangle Tree4 = new Rectangle(390, 50, 100, 100); // tree 4 rectangle
+        Rectangle Tree5 = new Rectangle(490, 50, 100, 100); // tree 5 rectangle
+        Rectangle Tree6 = new Rectangle(590, 50, 100, 100); // tree 6 rectangle
+        Rectangle Daisy1 = new Rectangle(20, 200, 80, 80); // daisy 1 rectangle
+        Rectangle Daisy2 = new Rectangle(120, 200, 80, 80); //its pretty self explanitory
         Rectangle Daisy3 = new Rectangle(220, 200, 80, 80);
         Rectangle Allium1 = new Rectangle(390, 200, 80, 80);
         Rectangle Allium2 = new Rectangle(490, 200, 80, 80);
@@ -33,7 +35,8 @@ namespace Harvest_Game
         Rectangle Sunflower2 = new Rectangle(490, 350, 80, 80);
         Rectangle Sunflower3 = new Rectangle(590, 350, 80, 80);
         // Images for different sides of sprites, trees, flowers, and the small plant.
-        Image Front = Properties.Resources.Front;
+        //Loading images from the resources folder.
+        Image Front = Properties.Resources.Front; // different sides of the same sprite.
         Image Back = Properties.Resources.Back;
         Image SpriteLeft = Properties.Resources.Left;
         Image SpriteRight = Properties.Resources.Right;
@@ -46,167 +49,169 @@ namespace Harvest_Game
         Image Sunflower = Properties.Resources.Sunflower;
         Image Lavender = Properties.Resources.Lavender;
         Image Growing = Properties.Resources.Growing;
-        // Money is given 
+        // Money is given when you harvest stuff, and then goes towards the mortgage which will be paid off and the number will be reduced
         int money = 500;
         int mortgage = 10000;
 
         Graphics g;
+        // all the crop ones are for when they are grown and the image is drawn. Completed is for when the mortgage is finished and stops the completion message from showing up more than once.
         bool left, right, up, down, peach1, peach2, nashi1, nashi2, apple1, apple2, front, back, interact, daisy1, daisy2, daisy3, allium1, allium2, allium3, lavender1, lavender2, lavender3, sunflower1, sunflower2, sunflower3, completed;
 
         private void Mortgage_Tick(object sender, EventArgs e)
         {
-            if (money >= 1000)
+            if (money >= 1000) //check if player has enough money to pay the mortgage.
             {
-                if (mortgage > 1)
+                if (mortgage > 1) //check if the mortgage needs paying
                 {
-                    left = false;
+                    left = false; //stop player movement
                     right = false;
                     up = false;
                     down = false;
-                    Mortgage.Enabled = false;
-                    MessageBox.Show("Payment is due! The funds have been taken from your account.");
-                    money = money - 1000;
-                    mortgage = mortgage - 1000;
-                    Mortgage.Enabled = true;
+                    Mortgage.Enabled = false; //stop the timer
+                    MessageBox.Show("Payment is due! The funds have been taken from your account."); //remind the player of payment
+                    money = money - 1000; //take away money
+                    mortgage = mortgage - 1000; // take away money remaining on mortgage
+                    Mortgage.Enabled = true; //restart the timer
                 }
             }
-            if (completed == false)
+            if (completed == false) //check if game has not been completed
             {
-                if (mortgage == 0)
+                if (mortgage == 0) // check if mortgage is completely paid ( equals 0 )
                 {
-                    completed = true;
+                    completed = true; // Player has completed game
                     MessageBox.Show("Congratulations!" + Environment.NewLine +
                         "" + Environment.NewLine +
                         "You have paid off your mortgage! You no longer have to pay any more payments. You can continue playing if you would like, but there is nothing more than harvesting fruit and flowers :D"
                         + Environment.NewLine + "If you have gotten this far and are seeing this message, I really hope you enjoyed the game. Let me know if there is anything you would want me to change or anything you liked!");
+                    //show message box
                 }
             }
         }
 
         private void SunflowerGrow3_Tick(object sender, EventArgs e)
         {
-            sunflower3 = true;
-            SunflowerGrow3.Enabled = false;
-            Garden.Invalidate();
+            sunflower3 = true; // sunflower is grown
+            SunflowerGrow3.Enabled = false; // disable the timer
+            Garden.Invalidate(); // redraw the panel
         }
 
         private void SunflowerGrow2_Tick(object sender, EventArgs e)
         {
-            sunflower2 = true;
-            SunflowerGrow2.Enabled = false;
-            Garden.Invalidate();
+            sunflower2 = true; // sunflower is grown
+            SunflowerGrow2.Enabled = false; // disable the timer
+            Garden.Invalidate(); // redraw the panel
         }
 
         private void SunflowerGrow1_Tick(object sender, EventArgs e)
         {
-            sunflower1 = true;
-            SunflowerGrow1.Enabled = false;
-            Garden.Invalidate();
+            sunflower1 = true; // sunflower is grown
+            SunflowerGrow1.Enabled = false; // disable timer
+            Garden.Invalidate(); // redraw panel
         }
 
         private void LavenderGrow3_Tick(object sender, EventArgs e)
         {
-            lavender3 = true;
-            LavenderGrow3.Enabled = false;
-            Garden.Invalidate();
+            lavender3 = true; //lavender is grown
+            LavenderGrow3.Enabled = false; // disable timer
+            Garden.Invalidate(); //redraw panel
         }
 
         private void LavenderGrow2_Tick(object sender, EventArgs e)
         {
-            lavender2 = true;
-            LavenderGrow2.Enabled = false;
-            Garden.Invalidate();
+            lavender2 = true; // lavender is grown
+            LavenderGrow2.Enabled = false; // disable timer
+            Garden.Invalidate(); // redraw panel
         }
 
         private void LavenderGrow1_Tick_1(object sender, EventArgs e)
         {
-            lavender1 = true;
-            LavenderGrow1.Enabled = false;
-            Garden.Invalidate();
+            lavender1 = true; // lavender is grown
+            LavenderGrow1.Enabled = false; // disable timer
+            Garden.Invalidate(); // redraw panel
         }
 
         private void AlliumGrow3_Tick(object sender, EventArgs e)
         {
-            allium3 = true;
-            AlliumGrow3.Enabled = false;
-            Garden.Invalidate();
+            allium3 = true; //alium is grown
+            AlliumGrow3.Enabled = false; //timer is disabled
+            Garden.Invalidate(); // redraw panel
         }
 
         private void AlliumGrow2_Tick(object sender, EventArgs e)
         {
-            allium2 = true;
-            AlliumGrow2.Enabled = false;
-            Garden.Invalidate();
+            allium2 = true; //allium is grown
+            AlliumGrow2.Enabled = false; // timer is diabled
+            Garden.Invalidate(); // redraw panel
         }
 
         private void AlliumGrow1_Tick(object sender, EventArgs e)
         {
-            allium1 = true;
-            AlliumGrow1.Enabled = false;
-            Garden.Invalidate();
+            allium1 = true; // allium is grown
+            AlliumGrow1.Enabled = false; // disable timer
+            Garden.Invalidate(); // redraw panel
         }
 
         private void DaisyGrow3_Tick(object sender, EventArgs e)
         {
-            daisy3 = true;
-            DaisyGrow3.Enabled = false;
-            Garden.Invalidate();
+            daisy3 = true; // daisy is grown
+            DaisyGrow3.Enabled = false; // disable timer
+            Garden.Invalidate(); //redraw panel
         }
 
         private void DaisyGrow2_Tick(object sender, EventArgs e)
         {
-            daisy2 = true;
-            DaisyGrow2.Enabled = false;
-            Garden.Invalidate();
+            daisy2 = true; // daisy is grown
+            DaisyGrow2.Enabled = false; // disable timer
+            Garden.Invalidate(); // redraw panel
         }
 
         private void DaisyGrow1_Tick(object sender, EventArgs e)
         {
-            daisy1 = true;
-            DaisyGrow1.Enabled = false;
-            Garden.Invalidate();
+            daisy1 = true; // daisy is grown
+            DaisyGrow1.Enabled = false; // disable timer
+            Garden.Invalidate(); // redraw timer
         }
 
         private void TreeTime6_Tick(object sender, EventArgs e)
         {
-            peach2 = true;
-            TreeTime6.Enabled = false;
-            Garden.Invalidate();
+            peach2 = true; // peach is grown
+            TreeTime6.Enabled = false; // disable timer
+            Garden.Invalidate(); // redraw timer
         }
 
         private void TreeTime5_Tick(object sender, EventArgs e)
         {
-            nashi2 = true;
-            TreeTime5.Enabled = false;
-            Garden.Invalidate();
+            nashi2 = true; // nashi is grown
+            TreeTime5.Enabled = false; // disable timer
+            Garden.Invalidate(); // redraw panel
         }
 
         private void TreeTime4_Tick(object sender, EventArgs e)
         {
-            apple2 = true;
-            TreeTime4.Enabled = false;
-            Garden.Invalidate();
+            apple2 = true; // apple is grown
+            TreeTime4.Enabled = false; // disable timer
+            Garden.Invalidate(); // redraw panel
         }
 
         private void TreeTime3_Tick(object sender, EventArgs e)
         {
-            peach1 = true;
-            TreeTime3.Enabled = false;
-            Garden.Invalidate();
+            peach1 = true; // peach is grown
+            TreeTime3.Enabled = false; // disable timer
+            Garden.Invalidate(); // redraw panel
         }
 
         private void TreeTime2_Tick(object sender, EventArgs e)
         {
-            nashi1 = true;
-            TreeTime2.Enabled = false;
-            Garden.Invalidate();
+            nashi1 = true; // nashi is grown
+            TreeTime2.Enabled = false; // disable timer
+            Garden.Invalidate(); // redraw timer
         }
 
         private void TreeTime1_Tick(object sender, EventArgs e)
         {
-            apple1 = true;
-            TreeTime1.Enabled = false;
-            Garden.Invalidate();
+            apple1 = true; //apple is grown
+            TreeTime1.Enabled = false; // disable timer
+            Garden.Invalidate(); // redraw panel
         }
 
         private void HarvestFrm_KeyUp(object sender, KeyEventArgs e)
@@ -276,7 +281,7 @@ namespace Harvest_Game
             }
             if (e.KeyData == Keys.I)
             {
-                left = false;
+                left = false; // stops player from moving
                 right = false;
                 up = false;
                 down = false;
@@ -296,51 +301,51 @@ namespace Harvest_Game
         {
             if (left == true)
             {
-                if (SpriteRec.X < 10)
+                if (SpriteRec.X < 10) // if sprite is within 10 of the left side
                 {
-                    SpriteRec.X = 10;
+                    SpriteRec.X = 10; // 'bounce' back
                 }
-                else
+                else // if not
                 {
                     SpriteRec.X -= 2; //move sprite 2 to the left
                 }
             }
             if (right == true)
             {
-                if (SpriteRec.X > Garden.Width - 55)// is spaceship within 55 of right side
+                if (SpriteRec.X > Garden.Width - 55)// is spright within 55 of right side
                 {
-                    SpriteRec.X = Garden.Width - 55;
+                    SpriteRec.X = Garden.Width - 55; // 'bounce' back
                 }
-                else
+                else // if not
                 {
-                    SpriteRec.X += 2;
+                    SpriteRec.X += 2; // move sprite 2 to the right
                 }
 
-            }// move sprite 2 to the right
+            }
             if (down == true)
             {
-                if (SpriteRec.Y > 490)// is spaceship within 40 of right side
+                if (SpriteRec.Y > 490)// is sprite over 490 of top side. I did this because my panel is a weird size.
                 {
-                    SpriteRec.Y = 490;
+                    SpriteRec.Y = 490; // 'bounce' back
                 }
-                else
+                else // if not
                 {
-                    SpriteRec.Y += 2;
+                    SpriteRec.Y += 2; // move two down
                 }
 
             }
             if (up == true)
             {
-                if (SpriteRec.Y < 10)
+                if (SpriteRec.Y < 10) // if sprite is within 10 of the top
                 {
-                    SpriteRec.Y = 10;
+                    SpriteRec.Y = 10; // 'bounce' back
                 }
-                else
+                else // if not
                 {
                     SpriteRec.Y -= 2; //move sprite 2 to the left
                 }
             }
-            Garden.Invalidate();
+            Garden.Invalidate(); // redraw panel to show sprites movement
         }
 
         public HarvestFrm()
@@ -348,8 +353,7 @@ namespace Harvest_Game
             InitializeComponent();
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
                 | BindingFlags.Instance | BindingFlags.NonPublic, null, Garden,
-                new object[] { true });
-            Mortgage.Enabled = false;
+                new object[] { true }); // double buffer code
             MessageBox.Show("Instructions for play: " +
                 "Use WASD or Arrow Keys to move the character. Use enter or space bar to interact with the things around you!" + Environment.NewLine +
                 "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
@@ -357,9 +361,9 @@ namespace Harvest_Game
                 "Payment will not be taken if you do not have enough money."+Environment.NewLine +
                 "Once you have paid off your mortgage, you no longer have to pay anything!" + Environment.NewLine +
                 "Press 'I' to see this information box again." + Environment.NewLine +
-                "Have fun!");
-            Mortgage.Enabled = true;
-            peach1 = true;
+                "Have fun!"); // show instructions
+            Mortgage.Enabled = true; // enable money grabber timer
+            peach1 = true; // have all of the crops grown
             peach2 = true;
             nashi1 = true;
             nashi2 = true;
@@ -377,38 +381,42 @@ namespace Harvest_Game
             sunflower1 = true;
             sunflower2 = true;
             sunflower3 = true;
-            front = true;
+            front = true; // draw sprite front first
         }
 
         private void Garden_Paint(object sender, PaintEventArgs e)
         {
+            //get the methods from the graphic's class to paint on the panel
             g = e.Graphics;
-            MoneyLbl.Text = money + "";
-            MortgageNumLbl.Text = mortgage + "";
-            if (SpriteRec.IntersectsWith(Tree1)) //Tree One Code
+            MoneyLbl.Text = money + ""; //display the int money at the label on the form
+            MortgageNumLbl.Text = mortgage + ""; //display the int mortgage on the label on the form
+
+            //Tree One Code
+            if (SpriteRec.IntersectsWith(Tree1)) 
             {
-                if (interact == true)
+                if (interact == true) //if the player wants to interact with that rectangle
                 {
-                    if (apple1 == true)
+                    if (apple1 == true) // if the apple is grown (from the timer)
                     {
-                        interact = false;
-                        TreeTime1.Enabled = true;
-                        money = money + 50;
-                        apple1 = false;
+                        interact = false; // stop the player from interacting with it
+                        TreeTime1.Enabled = true; // enable the timer again
+                        money = money + 50; // add to the int money
+                        apple1 = false; // get rid of the apples on the tree
                     }
                 }
             }
             if (apple1 == true)
             {
-                g.DrawImage(Apple, Tree1);
+                g.DrawImage(Apple, Tree1); // if the apples are grown then draw them on the panel
             }
-            if (apple1 == false)
+            if (apple1 == false) 
             {
-                g.DrawImage(Tree, Tree1);
+                g.DrawImage(Tree, Tree1); // if the apples are not grown then draw an normal tree
 
             }
-
-            if (SpriteRec.IntersectsWith(Tree2)) //Tree Two Code
+            
+            //Tree Two Code
+            if (SpriteRec.IntersectsWith(Tree2)) // basically the exact same thing as tree 1 but it draws a nashi tree not an apple tree
             {
                 if (interact == true)
                 {
@@ -430,7 +438,8 @@ namespace Harvest_Game
                 g.DrawImage(Tree, Tree2);
             }
 
-            if (SpriteRec.IntersectsWith(Tree3)) //Tree Three Code
+            //Tree Three Code
+            if (SpriteRec.IntersectsWith(Tree3))  //exact same thing again but with peaches this time
             {
                 if (interact == true)
                 {
@@ -452,7 +461,8 @@ namespace Harvest_Game
                 g.DrawImage(Tree, Tree3);
             }
 
-            if (SpriteRec.IntersectsWith(Tree4)) //Tree Four Code
+            //Tree Four Code
+            if (SpriteRec.IntersectsWith(Tree4)) //exact same but with apples again
             {
                 if (interact == true)
                 {
@@ -474,7 +484,8 @@ namespace Harvest_Game
                 g.DrawImage(Tree, Tree4);
             }
 
-            if (SpriteRec.IntersectsWith(Tree5)) //Tree Five Code
+            //Tree Five Code
+            if (SpriteRec.IntersectsWith(Tree5)) //with nashi again. I put a one and a two so I could diffrenciate between the ones on the left of the screen and the ones of the right.
             {
                 if (interact == true)
                 {
@@ -496,7 +507,8 @@ namespace Harvest_Game
                 g.DrawImage(Tree, Tree5);
             }
 
-            if (SpriteRec.IntersectsWith(Tree6)) //Tree Six Code
+            //Tree Six Code
+            if (SpriteRec.IntersectsWith(Tree6)) //peaches again this time
             {
                 if (interact == true)
                 {
@@ -518,7 +530,8 @@ namespace Harvest_Game
                 g.DrawImage(Tree, Tree6);
             }
 
-            if (SpriteRec.IntersectsWith(Daisy1)) //Daisy One Code
+            //Daisy One Code
+            if (SpriteRec.IntersectsWith(Daisy1)) //all the code is basically the same from now on until the sprite drawing.
             {
                 if (interact == true)
                 {
@@ -540,6 +553,7 @@ namespace Harvest_Game
                 g.DrawImage(Growing, Daisy1);
             }
 
+            //Daisy Two Code
             if (SpriteRec.IntersectsWith(Daisy2)) //Daisy Two Code
             {
                 if (interact == true)
@@ -562,6 +576,7 @@ namespace Harvest_Game
                 g.DrawImage(Growing, Daisy2);
             }
 
+            //Daisy Three Code
             if (SpriteRec.IntersectsWith(Daisy3)) //Daisy Three Code
             {
                 if (interact == true)
@@ -584,6 +599,7 @@ namespace Harvest_Game
                 g.DrawImage(Growing, Daisy3);
             }
 
+            //Allium One Code
             if (SpriteRec.IntersectsWith(Allium1)) //Allium One Code
             {
                 if (interact == true)
@@ -606,6 +622,7 @@ namespace Harvest_Game
                 g.DrawImage(Growing, Allium1);
             }
 
+            //Allium Two Code
             if (SpriteRec.IntersectsWith(Allium2)) //Allium Two Code
             {
                 if (interact == true)
@@ -628,6 +645,7 @@ namespace Harvest_Game
                 g.DrawImage(Growing, Allium2);
             }
 
+            //Allium Three Code
             if (SpriteRec.IntersectsWith(Allium3)) //Allium Three Code
             {
                 if (interact == true)
@@ -650,7 +668,8 @@ namespace Harvest_Game
                 g.DrawImage(Growing, Allium3);
             }
 
-            if (SpriteRec.IntersectsWith(Lavender1)) //Lavender One Code
+            //Lavender One Code
+            if (SpriteRec.IntersectsWith(Lavender1)) 
             {
                 if (interact == true)
                 {
@@ -672,7 +691,8 @@ namespace Harvest_Game
                 g.DrawImage(Growing, Lavender1);
             }
 
-            if (SpriteRec.IntersectsWith(Lavender2)) //Lavender Two Code
+            //Lavender Two Code
+            if (SpriteRec.IntersectsWith(Lavender2)) 
             {
                 if (interact == true)
                 {
@@ -694,7 +714,8 @@ namespace Harvest_Game
                 g.DrawImage(Growing, Lavender2);
             }
 
-            if (SpriteRec.IntersectsWith(Lavender3)) //Lavender Three Code
+            //Lavender Three Code
+            if (SpriteRec.IntersectsWith(Lavender3)) 
             {
                 if (interact == true)
                 {
@@ -716,7 +737,8 @@ namespace Harvest_Game
                 g.DrawImage(Growing, Lavender3);
             }
 
-            if (SpriteRec.IntersectsWith(Sunflower1)) //Sunflower One Code
+            //Sunflower One Code
+            if (SpriteRec.IntersectsWith(Sunflower1))
             {
                 if (interact == true)
                 {
@@ -738,7 +760,8 @@ namespace Harvest_Game
                 g.DrawImage(Growing, Sunflower1);
             }
 
-            if (SpriteRec.IntersectsWith(Sunflower2)) //Sunflower Two Code
+            //Sunflower Two Code
+            if (SpriteRec.IntersectsWith(Sunflower2)) 
             {
                 if (interact == true)
                 {
@@ -760,7 +783,8 @@ namespace Harvest_Game
                 g.DrawImage(Growing, Sunflower2);
             }
 
-            if (SpriteRec.IntersectsWith(Sunflower3)) //Sunflower Three Code
+            //Sunflower Three Code
+            if (SpriteRec.IntersectsWith(Sunflower3)) 
             {
                 if (interact == true)
                 {
@@ -788,11 +812,11 @@ namespace Harvest_Game
                 {
                     if (front == true)
                     {
-                        g.DrawImage(Front, SpriteRec);
+                        g.DrawImage(Front, SpriteRec); //this draws the front of the sprite if they are not facing any other directions
                     }
                     if (back == true)
                     {
-                        g.DrawImage(Back, SpriteRec);
+                        g.DrawImage(Back, SpriteRec); //this draws the back of the sprite if they are not facing any other directions
                     }
                 }
             }
@@ -802,7 +826,10 @@ namespace Harvest_Game
             }
             if (right == true)
             {
-                g.DrawImage(SpriteRight, SpriteRec);
+                if (left == false)
+                {
+                    g.DrawImage(SpriteRight, SpriteRec); // this draws the right side of the sprite even if they are also moving up or down
+                }
             }
         }
     }

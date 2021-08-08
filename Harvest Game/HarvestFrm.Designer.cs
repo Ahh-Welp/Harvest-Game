@@ -31,6 +31,7 @@ namespace Harvest_Game
         {
             this.components = new System.ComponentModel.Container();
             this.Garden = new System.Windows.Forms.Panel();
+            this.Info = new System.Windows.Forms.Label();
             this.MortgageNumLbl = new System.Windows.Forms.Label();
             this.MortgageLbl = new System.Windows.Forms.Label();
             this.MoneyLbl = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@ namespace Harvest_Game
             this.SunflowerGrow1 = new System.Windows.Forms.Timer(this.components);
             this.SunflowerGrow2 = new System.Windows.Forms.Timer(this.components);
             this.SunflowerGrow3 = new System.Windows.Forms.Timer(this.components);
-            this.Info = new System.Windows.Forms.Label();
             this.Garden.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,6 +75,16 @@ namespace Harvest_Game
             this.Garden.Size = new System.Drawing.Size(690, 570);
             this.Garden.TabIndex = 0;
             this.Garden.Paint += new System.Windows.Forms.PaintEventHandler(this.Garden_Paint);
+            // 
+            // Info
+            // 
+            this.Info.AutoSize = true;
+            this.Info.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Info.Location = new System.Drawing.Point(17, 14);
+            this.Info.Name = "Info";
+            this.Info.Size = new System.Drawing.Size(266, 21);
+            this.Info.TabIndex = 5;
+            this.Info.Text = "Press \'I\' to see the instructions again!";
             // 
             // MortgageNumLbl
             // 
@@ -161,7 +171,6 @@ namespace Harvest_Game
             // 
             // Mortgage
             // 
-            this.Mortgage.Enabled = true;
             this.Mortgage.Interval = 20000;
             this.Mortgage.Tick += new System.EventHandler(this.Mortgage_Tick);
             // 
@@ -224,16 +233,6 @@ namespace Harvest_Game
             // 
             this.SunflowerGrow3.Interval = 5000;
             this.SunflowerGrow3.Tick += new System.EventHandler(this.SunflowerGrow3_Tick);
-            // 
-            // Info
-            // 
-            this.Info.AutoSize = true;
-            this.Info.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Info.Location = new System.Drawing.Point(17, 14);
-            this.Info.Name = "Info";
-            this.Info.Size = new System.Drawing.Size(266, 21);
-            this.Info.TabIndex = 5;
-            this.Info.Text = "Press \'I\' to see the instructions again!";
             // 
             // HarvestFrm
             // 
