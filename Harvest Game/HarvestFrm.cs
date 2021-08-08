@@ -12,7 +12,7 @@ using System.Reflection;
 namespace Harvest_Game
 {
     public partial class HarvestFrm : Form
-    {
+    { //These are the rectangles for the player and all the crops. 
         Rectangle SpriteRec = new Rectangle(0, 0, 60, 60);
         Rectangle Tree1 = new Rectangle(20, 50, 100, 100);
         Rectangle Tree2 = new Rectangle(120, 50, 100, 100);
@@ -32,7 +32,7 @@ namespace Harvest_Game
         Rectangle Sunflower1 = new Rectangle(390, 350, 80, 80);
         Rectangle Sunflower2 = new Rectangle(490, 350, 80, 80);
         Rectangle Sunflower3 = new Rectangle(590, 350, 80, 80);
-
+        // Images for different sides of sprites, trees, flowers, and the small plant.
         Image Front = Properties.Resources.Front;
         Image Back = Properties.Resources.Back;
         Image SpriteLeft = Properties.Resources.Left;
@@ -46,7 +46,7 @@ namespace Harvest_Game
         Image Sunflower = Properties.Resources.Sunflower;
         Image Lavender = Properties.Resources.Lavender;
         Image Growing = Properties.Resources.Growing;
-
+        // Money is given 
         int money = 500;
         int mortgage = 10000;
 
@@ -220,6 +220,7 @@ namespace Harvest_Game
             if (e.KeyData == Keys.W) { up = false; }
             if (e.KeyData == Keys.S) { down = false; }
             if (e.KeyData == Keys.Enter) { interact = false; }
+            if (e.KeyData == Keys.Space) { interact = false; }
 
         }
 
@@ -269,6 +270,10 @@ namespace Harvest_Game
             {
                 interact = true; 
             }
+            if (e.KeyData == Keys.Space)
+            {
+                interact = true;
+            }
             if (e.KeyData == Keys.I)
             {
                 left = false;
@@ -276,7 +281,7 @@ namespace Harvest_Game
                 up = false;
                 down = false;
                 MessageBox.Show("Instructions for play: " +
-                                "Use WASD or Arrow Keys to move the character. Use enter to interact with the things around you!" + Environment.NewLine +
+                                "Use WASD or Arrow Keys to move the character. Use enter or space bar to interact with the things around you!" + Environment.NewLine +
                                 "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
                                 "Your mortgage is collected after a certain amount of time. There will be a message box to show you remind you that your payment is due." + Environment.NewLine +
                                 "Payment will not be taken if you do not have enough money." + Environment.NewLine +
@@ -346,7 +351,7 @@ namespace Harvest_Game
                 new object[] { true });
             Mortgage.Enabled = false;
             MessageBox.Show("Instructions for play: " +
-                "Use WASD or Arrow Keys to move the character. Use enter to interact with the things around you!" + Environment.NewLine +
+                "Use WASD or Arrow Keys to move the character. Use enter or space bar to interact with the things around you!" + Environment.NewLine +
                 "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
                 "Your mortgage is collected after a certain amount of time. There will be a message box to show you remind you that your payment is due." + Environment.NewLine +
                 "Payment will not be taken if you do not have enough money."+Environment.NewLine +

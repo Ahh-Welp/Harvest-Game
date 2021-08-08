@@ -31,6 +31,8 @@ namespace Harvest_Game
         {
             this.components = new System.ComponentModel.Container();
             this.Garden = new System.Windows.Forms.Panel();
+            this.MortgageNumLbl = new System.Windows.Forms.Label();
+            this.MortgageLbl = new System.Windows.Forms.Label();
             this.MoneyLbl = new System.Windows.Forms.Label();
             this.Money = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,14 +56,14 @@ namespace Harvest_Game
             this.SunflowerGrow1 = new System.Windows.Forms.Timer(this.components);
             this.SunflowerGrow2 = new System.Windows.Forms.Timer(this.components);
             this.SunflowerGrow3 = new System.Windows.Forms.Timer(this.components);
-            this.MortgageLbl = new System.Windows.Forms.Label();
-            this.MortgageNumLbl = new System.Windows.Forms.Label();
+            this.Info = new System.Windows.Forms.Label();
             this.Garden.SuspendLayout();
             this.SuspendLayout();
             // 
             // Garden
             // 
-            this.Garden.BackColor = System.Drawing.Color.ForestGreen;
+            this.Garden.BackColor = System.Drawing.Color.Green;
+            this.Garden.Controls.Add(this.Info);
             this.Garden.Controls.Add(this.MortgageNumLbl);
             this.Garden.Controls.Add(this.MortgageLbl);
             this.Garden.Controls.Add(this.MoneyLbl);
@@ -74,21 +76,43 @@ namespace Harvest_Game
             this.Garden.TabIndex = 0;
             this.Garden.Paint += new System.Windows.Forms.PaintEventHandler(this.Garden_Paint);
             // 
+            // MortgageNumLbl
+            // 
+            this.MortgageNumLbl.AutoSize = true;
+            this.MortgageNumLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MortgageNumLbl.Location = new System.Drawing.Point(369, 519);
+            this.MortgageNumLbl.Name = "MortgageNumLbl";
+            this.MortgageNumLbl.Size = new System.Drawing.Size(55, 21);
+            this.MortgageNumLbl.TabIndex = 4;
+            this.MortgageNumLbl.Text = "10000";
+            // 
+            // MortgageLbl
+            // 
+            this.MortgageLbl.AutoSize = true;
+            this.MortgageLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MortgageLbl.Location = new System.Drawing.Point(203, 519);
+            this.MortgageLbl.Name = "MortgageLbl";
+            this.MortgageLbl.Size = new System.Drawing.Size(160, 21);
+            this.MortgageLbl.TabIndex = 3;
+            this.MortgageLbl.Text = "Mortgage Remaining:";
+            // 
             // MoneyLbl
             // 
             this.MoneyLbl.AutoSize = true;
-            this.MoneyLbl.Location = new System.Drawing.Point(588, 148);
+            this.MoneyLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MoneyLbl.Location = new System.Drawing.Point(588, 147);
             this.MoneyLbl.Name = "MoneyLbl";
-            this.MoneyLbl.Size = new System.Drawing.Size(25, 15);
+            this.MoneyLbl.Size = new System.Drawing.Size(37, 21);
             this.MoneyLbl.TabIndex = 2;
             this.MoneyLbl.Text = "500";
             // 
             // Money
             // 
             this.Money.AutoSize = true;
-            this.Money.Location = new System.Drawing.Point(588, 111);
+            this.Money.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Money.Location = new System.Drawing.Point(588, 105);
             this.Money.Name = "Money";
-            this.Money.Size = new System.Drawing.Size(44, 15);
+            this.Money.Size = new System.Drawing.Size(58, 21);
             this.Money.TabIndex = 1;
             this.Money.Text = "Money";
             // 
@@ -107,37 +131,31 @@ namespace Harvest_Game
             // 
             // TreeTime1
             // 
-            this.TreeTime1.Enabled = true;
             this.TreeTime1.Interval = 5000;
             this.TreeTime1.Tick += new System.EventHandler(this.TreeTime1_Tick);
             // 
             // TreeTime2
             // 
-            this.TreeTime2.Enabled = true;
             this.TreeTime2.Interval = 5000;
             this.TreeTime2.Tick += new System.EventHandler(this.TreeTime2_Tick);
             // 
             // TreeTime3
             // 
-            this.TreeTime3.Enabled = true;
             this.TreeTime3.Interval = 5000;
             this.TreeTime3.Tick += new System.EventHandler(this.TreeTime3_Tick);
             // 
             // TreeTime4
             // 
-            this.TreeTime4.Enabled = true;
             this.TreeTime4.Interval = 5000;
             this.TreeTime4.Tick += new System.EventHandler(this.TreeTime4_Tick);
             // 
             // TreeTime5
             // 
-            this.TreeTime5.Enabled = true;
             this.TreeTime5.Interval = 5000;
             this.TreeTime5.Tick += new System.EventHandler(this.TreeTime5_Tick);
             // 
             // TreeTime6
             // 
-            this.TreeTime6.Enabled = true;
             this.TreeTime6.Interval = 5000;
             this.TreeTime6.Tick += new System.EventHandler(this.TreeTime6_Tick);
             // 
@@ -149,93 +167,73 @@ namespace Harvest_Game
             // 
             // DaisyGrow1
             // 
-            this.DaisyGrow1.Enabled = true;
             this.DaisyGrow1.Interval = 5000;
             this.DaisyGrow1.Tick += new System.EventHandler(this.DaisyGrow1_Tick);
             // 
             // DaisyGrow2
             // 
-            this.DaisyGrow2.Enabled = true;
             this.DaisyGrow2.Interval = 5000;
             this.DaisyGrow2.Tick += new System.EventHandler(this.DaisyGrow2_Tick);
             // 
             // DaisyGrow3
             // 
-            this.DaisyGrow3.Enabled = true;
             this.DaisyGrow3.Interval = 5000;
             this.DaisyGrow3.Tick += new System.EventHandler(this.DaisyGrow3_Tick);
             // 
             // AlliumGrow1
             // 
-            this.AlliumGrow1.Enabled = true;
             this.AlliumGrow1.Interval = 5000;
             this.AlliumGrow1.Tick += new System.EventHandler(this.AlliumGrow1_Tick);
             // 
             // AlliumGrow2
             // 
-            this.AlliumGrow2.Enabled = true;
             this.AlliumGrow2.Interval = 5000;
             this.AlliumGrow2.Tick += new System.EventHandler(this.AlliumGrow2_Tick);
             // 
             // AlliumGrow3
             // 
-            this.AlliumGrow3.Enabled = true;
             this.AlliumGrow3.Interval = 5000;
             this.AlliumGrow3.Tick += new System.EventHandler(this.AlliumGrow3_Tick);
             // 
             // LavenderGrow3
             // 
-            this.LavenderGrow3.Enabled = true;
             this.LavenderGrow3.Interval = 5000;
             this.LavenderGrow3.Tick += new System.EventHandler(this.LavenderGrow3_Tick);
             // 
             // LavenderGrow2
             // 
-            this.LavenderGrow2.Enabled = true;
             this.LavenderGrow2.Interval = 5000;
             this.LavenderGrow2.Tick += new System.EventHandler(this.LavenderGrow2_Tick);
             // 
             // LavenderGrow1
             // 
-            this.LavenderGrow1.Enabled = true;
             this.LavenderGrow1.Interval = 5000;
             this.LavenderGrow1.Tick += new System.EventHandler(this.LavenderGrow1_Tick_1);
             // 
             // SunflowerGrow1
             // 
-            this.SunflowerGrow1.Enabled = true;
             this.SunflowerGrow1.Interval = 5000;
             this.SunflowerGrow1.Tick += new System.EventHandler(this.SunflowerGrow1_Tick);
             // 
             // SunflowerGrow2
             // 
-            this.SunflowerGrow2.Enabled = true;
             this.SunflowerGrow2.Interval = 5000;
             this.SunflowerGrow2.Tick += new System.EventHandler(this.SunflowerGrow2_Tick);
             // 
             // SunflowerGrow3
             // 
-            this.SunflowerGrow3.Enabled = true;
             this.SunflowerGrow3.Interval = 5000;
             this.SunflowerGrow3.Tick += new System.EventHandler(this.SunflowerGrow3_Tick);
             // 
-            // MortgageLbl
+            // Info
             // 
-            this.MortgageLbl.AutoSize = true;
-            this.MortgageLbl.Location = new System.Drawing.Point(230, 520);
-            this.MortgageLbl.Name = "MortgageLbl";
-            this.MortgageLbl.Size = new System.Drawing.Size(122, 15);
-            this.MortgageLbl.TabIndex = 3;
-            this.MortgageLbl.Text = "Mortgage Remaining:";
-            // 
-            // MortgageNumLbl
-            // 
-            this.MortgageNumLbl.AutoSize = true;
-            this.MortgageNumLbl.Location = new System.Drawing.Point(358, 520);
-            this.MortgageNumLbl.Name = "MortgageNumLbl";
-            this.MortgageNumLbl.Size = new System.Drawing.Size(37, 15);
-            this.MortgageNumLbl.TabIndex = 4;
-            this.MortgageNumLbl.Text = "10000";
+            this.Info.AutoSize = true;
+            this.Info.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Info.Location = new System.Drawing.Point(17, 14);
+            this.Info.Name = "Info";
+            this.Info.Size = new System.Drawing.Size(266, 21);
+            this.Info.TabIndex = 5;
+            this.Info.Text = "Press \'I\' to see the instructions again!";
             // 
             // HarvestFrm
             // 
@@ -283,6 +281,7 @@ namespace Harvest_Game
         private System.Windows.Forms.Timer SunflowerGrow3;
         private System.Windows.Forms.Label MortgageNumLbl;
         private System.Windows.Forms.Label MortgageLbl;
+        private System.Windows.Forms.Label Info;
     }
 }
 

@@ -123,16 +123,6 @@ namespace Harvest_Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hotbar {
-            get {
-                object obj = ResourceManager.GetObject("Hotbar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Lavender {
             get {
                 object obj = ResourceManager.GetObject("Lavender", resourceCulture);
