@@ -257,45 +257,48 @@ namespace Harvest_Game
 
         private void HarvestFrm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Left)
+            if (name == false) // if the name is deselected
             {
-                left = true;
-            }
-            if (e.KeyData == Keys.Right)
-            {
-                right = true;
-            }
-            if (e.KeyData == Keys.Up)
-            {
-                up = true;
-                back = true;
-                front = false;
-            }
-            if (e.KeyData == Keys.Down)
-            {
-                down = true;
-                front = true;
-                back = false;
-            }
-            if (e.KeyData == Keys.A)
-            {
-                left = true;
-            }
-            if (e.KeyData == Keys.D)
-            {
-                right = true;
-            }
-            if (e.KeyData == Keys.W)
-            {
-                up = true;
-                front = false;
-                back = true;
-            }
-            if (e.KeyData == Keys.S)
-            {
-                down = true;
-                front = true;
-                back = false;
+                if (e.KeyData == Keys.Left)
+                {
+                    left = true;
+                }
+                if (e.KeyData == Keys.Right)
+                {
+                    right = true;
+                }
+                if (e.KeyData == Keys.Up)
+                {
+                    up = true;
+                    back = true;
+                    front = false;
+                }
+                if (e.KeyData == Keys.Down)
+                {
+                    down = true;
+                    front = true;
+                    back = false;
+                }
+                if (e.KeyData == Keys.A)
+                {
+                    left = true;
+                }
+                if (e.KeyData == Keys.D)
+                {
+                    right = true;
+                }
+                if (e.KeyData == Keys.W)
+                {
+                    up = true;
+                    front = false;
+                    back = true;
+                }
+                if (e.KeyData == Keys.S)
+                {
+                    down = true;
+                    front = true;
+                    back = false;
+                }
             }
             if (e.KeyData == Keys.Enter) 
             {
@@ -320,14 +323,12 @@ namespace Harvest_Game
                     right = false;
                     up = false;
                     down = false;
-                    MessageBox.Show("Instructions for play: " +
-                                    "Use WASD or Arrow Keys to move the character. Use enter or space bar to interact with the things around you!" + Environment.NewLine +
-                                    "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
-                                    "Your mortgage is collected after a certain amount of time. There will be a message box to show you remind you that your payment is due." + Environment.NewLine +
-                                    "Payment will not be taken if you do not have enough money." + Environment.NewLine +
-                                    "Once you have paid off your mortgage, you no longer have to pay anything!" + Environment.NewLine +
-                                    "Press 'I' to see this information box again." + Environment.NewLine +
-                                    "Have fun!");
+                    MessageBox.Show("Greetings and welcome to the Harvest Game!" + Environment.NewLine + "" +Environment.NewLine +
+                    "You are a florist, collecting flowers for sale at the nearby shop." + Environment.NewLine + "" + Environment.NewLine +
+                    "Travel using WASD or arrow keys and collect flowers and fruit by interacting with [Space] or [Enter]. You will be paid for flowers collected automatically, which will show on your money balance on screen." + Environment.NewLine + "" +Environment.NewLine +
+                    "Your goal is to pay off your mortgage. The remaining balance of your mortgage is also shown on screen. Once your mortgage is paid off, you no longer need to make payments." + Environment.NewLine + "" + Environment.NewLine +
+                    "Enjoy!");
+
                 }
             }
 
@@ -390,15 +391,12 @@ namespace Harvest_Game
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
                 | BindingFlags.Instance | BindingFlags.NonPublic, null, Garden,
                 new object[] { true }); // double buffer code
-            MessageBox.Show("Instructions for play: " +
-                "Use WASD or Arrow Keys to move the character. Use enter or space bar to interact with the things around you!" + Environment.NewLine +
-                "Trees and flowers will regrow after a certain amount of time" + Environment.NewLine +
-                "Your mortgage is collected after a certain amount of time. There will be a message box to show you remind you that your payment is due." + Environment.NewLine +
-                "Payment will not be taken if you do not have enough money."+Environment.NewLine +
-                "Once you have paid off your mortgage, you no longer have to pay anything!" + Environment.NewLine +
-                "To begin enter your name and then press enter. Your name can only consist of letters. Be careful, because you can't change it afterwards!" +Environment.NewLine +
-                "Press 'I' to see this information box again." + Environment.NewLine +
-                "Have fun!"); // show instructions
+            MessageBox.Show("Greetings and welcome to the Harvest Game!" + Environment.NewLine + "" + Environment.NewLine +
+            "To begin your career as a florist, please insert your name so we can send your money to the right place! To insert your name, enter only letters and then press [Enter] to confirm it. Be careful however, because once this is selected, the game begins and you can no longer change your name!" + Environment.NewLine + "" + Environment.NewLine +
+            "You are a florist, collecting flowers for sale at the nearby shop." + Environment.NewLine + "" + Environment.NewLine +
+            "Travel using WASD or arrow keys and collect flowers and fruit by interacting with [Space] or [Enter]. You will be paid for flowers collected automatically, which will show on your money balance on screen." + Environment.NewLine + "" + Environment.NewLine +
+            "Your goal is to pay off your mortgage. The remaining balance of your mortgage is also shown on screen. Once your mortgage is paid off, you no longer need to make payments." + Environment.NewLine + "" + Environment.NewLine +
+            "Enjoy!"); // show instructions
             peach1 = true; // have all of the crops grown
             peach2 = true;
             nashi1 = true;

@@ -31,6 +31,8 @@ namespace Harvest_Game
         {
             this.components = new System.ComponentModel.Container();
             this.Garden = new System.Windows.Forms.Panel();
+            this.TxtName = new System.Windows.Forms.TextBox();
+            this.NameLbl = new System.Windows.Forms.Label();
             this.Info = new System.Windows.Forms.Label();
             this.MortgageNumLbl = new System.Windows.Forms.Label();
             this.MortgageLbl = new System.Windows.Forms.Label();
@@ -57,8 +59,6 @@ namespace Harvest_Game
             this.SunflowerGrow1 = new System.Windows.Forms.Timer(this.components);
             this.SunflowerGrow2 = new System.Windows.Forms.Timer(this.components);
             this.SunflowerGrow3 = new System.Windows.Forms.Timer(this.components);
-            this.NameLbl = new System.Windows.Forms.Label();
-            this.TxtName = new System.Windows.Forms.TextBox();
             this.Garden.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,15 +80,33 @@ namespace Harvest_Game
             this.Garden.TabIndex = 0;
             this.Garden.Paint += new System.Windows.Forms.PaintEventHandler(this.Garden_Paint);
             // 
+            // TxtName
+            // 
+            this.TxtName.Location = new System.Drawing.Point(486, 12);
+            this.TxtName.Name = "TxtName";
+            this.TxtName.Size = new System.Drawing.Size(100, 23);
+            this.TxtName.TabIndex = 7;
+            this.TxtName.TextChanged += new System.EventHandler(this.TxtName_TextChanged);
+            // 
+            // NameLbl
+            // 
+            this.NameLbl.AutoSize = true;
+            this.NameLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NameLbl.Location = new System.Drawing.Point(425, 14);
+            this.NameLbl.Name = "NameLbl";
+            this.NameLbl.Size = new System.Drawing.Size(55, 21);
+            this.NameLbl.TabIndex = 6;
+            this.NameLbl.Text = "Name:";
+            // 
             // Info
             // 
             this.Info.AutoSize = true;
             this.Info.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Info.Location = new System.Drawing.Point(17, 14);
             this.Info.Name = "Info";
-            this.Info.Size = new System.Drawing.Size(266, 21);
+            this.Info.Size = new System.Drawing.Size(276, 21);
             this.Info.TabIndex = 5;
-            this.Info.Text = "Press \'I\' to see the instructions again!";
+            this.Info.Text = "Press [ i ] to see the instructions again!";
             // 
             // MortgageNumLbl
             // 
@@ -237,24 +255,6 @@ namespace Harvest_Game
             // 
             this.SunflowerGrow3.Interval = 5000;
             this.SunflowerGrow3.Tick += new System.EventHandler(this.SunflowerGrow3_Tick);
-            // 
-            // NameLbl
-            // 
-            this.NameLbl.AutoSize = true;
-            this.NameLbl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.NameLbl.Location = new System.Drawing.Point(425, 14);
-            this.NameLbl.Name = "NameLbl";
-            this.NameLbl.Size = new System.Drawing.Size(55, 21);
-            this.NameLbl.TabIndex = 6;
-            this.NameLbl.Text = "Name:";
-            // 
-            // TxtName
-            // 
-            this.TxtName.Location = new System.Drawing.Point(486, 12);
-            this.TxtName.Name = "TxtName";
-            this.TxtName.Size = new System.Drawing.Size(100, 23);
-            this.TxtName.TabIndex = 7;
-            this.TxtName.TextChanged += new System.EventHandler(this.TxtName_TextChanged);
             // 
             // HarvestFrm
             // 
